@@ -49,7 +49,7 @@ st.markdown("""
         display: flex;
         justify-content: center;
         align-items: center;
-        margin-top: 30px;
+        margin-top: 5px;
         margin-left: 30px;
         margin-right: 30px;
         padding-top: 0rem;
