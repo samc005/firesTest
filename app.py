@@ -64,7 +64,7 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # Sidebar
-st.sidebar.markdown("This model predicts the likelihood of wildfire occurrence based on environmental factors. Click on the map to choose a location, and the model will fetch environmental data for prediction.")
+st.sidebar.markdown("<p style='color: #FF5733;'>This model predicts the likelihood of wildfire occurrence based on environmental factors. Click on the map to choose a location, and the model will fetch environmental data for prediction.</p>")
 
 # Initialize map
 m = folium.Map(location=[40.0, -120.0], zoom_start=5)
