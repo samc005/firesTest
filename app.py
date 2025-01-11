@@ -69,7 +69,7 @@ m = folium.Map(location=[40.0, -120.0], zoom_start=5)
 # Add a Marker on Click (or any other interactive layer like GeoJSON)
 st.markdown("<h1 style='text-align: center; color:white;'>Click on the map to select a location:</h1>", unsafe_allow_html=True)
 
-st.markdown("<p style='color: #FF5733;'>This model predicts the likelihood of wildfire occurrence based on environmental factors. Click on the map to choose a location, and the model will fetch environmental data for prediction.</p>", unsafe_allow_html=True)
+st.markdown("<p style='text-align: center; color: #FF5733;'>This model predicts the likelihood of wildfire occurrence based on environmental factors. Click on the map to choose a location, and the model will fetch environmental data for prediction.</p>", unsafe_allow_html=True)
 
 # Render the map with `st_folium`
 map_result = st_folium(m, width=700)
