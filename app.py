@@ -1,7 +1,7 @@
 import streamlit as st 
 from joblib import load
 
-model = load("model.joblib")
+#model = load("model.joblib")
 
 
 import streamlit as st
