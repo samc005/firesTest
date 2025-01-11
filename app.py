@@ -50,7 +50,6 @@ st.markdown("""
         display: flex;
         justify-content: center;
         align-items: center;
-        height: 500px;  
         margin-top: 30px;
         margin-left: 30px;
         margin-right: 30px;
