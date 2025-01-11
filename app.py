@@ -3,12 +3,6 @@ from joblib import load
 
 #model = load("model.joblib")
 
-[theme]
-primaryColor="#FF4B4B"
-backgroundColor="#FFFFFF"
-secondaryBackgroundColor="#F0F2F6"
-textColor="#31333F"
-font="sans serif"
 
 st.title("Wildfire Prediction Model")
 
