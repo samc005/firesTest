@@ -3,7 +3,7 @@ from joblib import load
 
 #model = load("model.joblib")
 
-st.header("Wildfire Prediction Model")
+st.title("Wildfire Prediction Model")
 
 
 def get_input():
