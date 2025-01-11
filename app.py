@@ -74,6 +74,10 @@ map_result = st_folium(m, width=700)
 
 st.markdown('</div>', unsafe_allow_html=True)
 
+if map_result and "last_clicked" in map_result:
+    clicked_location = map_result["last_clicked"]
+    st.write(f"You clicked on location: {clicked_location}")
+
 # Footer with additional information
 st.markdown("""
     <div style="text-align: center; font-size: 14px; color: gray;">
