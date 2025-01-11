@@ -12,7 +12,7 @@ def get_input():
 def predict(model, input):
     return model.predict(input)
 
-def get_prediction():
+#def get_prediction():
 
 
 input_features = get_input()
