@@ -46,20 +46,6 @@ st.markdown("""
         color: #FF5733;
     }
     
-    /* Custom input box styling */
-    .stTextInput>div>input {
-        border: 2px solid #FF5733;
-        border-radius: 5px;
-        background-color: black;
-        color: white;
-    }
-    
-    /* Styling for the buttons */
-    .css-1g4w6y2 {
-        background-color: #FF5733;
-        color: white;
-        font-size: 18px;
-    }
     .map-container {
         display: flex;
         justify-content: center;
@@ -90,7 +76,7 @@ map_result = st_folium(m, width=700)
 st.markdown('</div>', unsafe_allow_html=True)
 
 # Capture the clicked coordinates from the map result
-if map_result:
+'''if map_result:
     # The result will contain the coordinates of the clicked location
     clicked_lat = map_result.get('lat')
     clicked_lon = map_result.get('lon')
@@ -132,7 +118,7 @@ if map_result:
             ax.bar(["Prediction"], [prediction_score], color="orange")
             ax.set_ylim(0, 1)
             st.pyplot(fig)
-
+'''
 # Footer with additional information
 st.markdown("""
     <div style="text-align: center; font-size: 14px; color: gray;">
