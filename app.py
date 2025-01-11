@@ -30,8 +30,8 @@ import folium
 from streamlit_folium import st_folium
 import random
 
-# Set page configuration
-st.set_page_config(page_title="Wildfire Prediction Model", page_icon="🔥", layout="wide")
+st.title("<h1 style='text-align: center; color: #FF5733;'>Wildfire Prediction Model</h1>", unsafe_allow_html=True)
+
 
 # Add custom styles
 st.markdown("""
@@ -64,14 +64,13 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # Sidebar
-st.sidebar.title("Wildfire Prediction Model")
 st.sidebar.markdown("This model predicts the likelihood of wildfire occurrence based on environmental factors. Click on the map to choose a location, and the model will fetch environmental data for prediction.")
 
 # Initialize map
 m = folium.Map(location=[40.0, -120.0], zoom_start=5)
 
 # Add a Marker on Click (or any other interactive layer like GeoJSON)
-st.markdown("### Click on the map to select a location:")
+st.markdown("<h1 style='text-align: center; color:white;'>Click on the map to select a location:</h1>", unsafe_allow_html=True)
 
 # Render the map with `st_folium`
 map_result = st_folium(m, width=700)
