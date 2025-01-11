@@ -84,10 +84,10 @@ st.markdown("""
 
 st.markdown('<div class="map-container">', unsafe_allow_html=True)
 
+st.markdown('</div>', unsafe_allow_html=True)
+
 # Render the map with `st_folium`
 map_result = st_folium(m, width=700)
-
-st.markdown('</div>', unsafe_allow_html=True)
 
 # Capture the clicked coordinates from the map result
 if map_result:
