@@ -3,7 +3,7 @@ from joblib import load
 
 #model = load("model.joblib")
 
-st.set_page_config(layout="wide", page_title="Wildfire Prediction Model", page_icon=":fire:")
+st.set_page_config(layout="wide", page_title="Wildfire Prediction Model")
 
 
 def get_input():
