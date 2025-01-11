@@ -30,7 +30,7 @@ import folium
 from streamlit_folium import st_folium
 import random
 
-st.markdown("<h1 style='text-align: center; color: #FF5733; font-family: lobster; font-size: 50px;'>Wildfire Prediction Model</h1>", unsafe_allow_html=True)
+st.markdown("<h1 style='text-align: center; color: #FF5733; font-family: Georgia; font-size: 50px;'>Wildfire Prediction Model</h1>", unsafe_allow_html=True)
 
 
 # Add custom styles
