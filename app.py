@@ -77,12 +77,9 @@ map_result = st_folium(m, width=700)
 
 st.markdown('</div>', unsafe_allow_html=True)
 
-# Capture the new clicked location
 if map_result and "last_clicked" in map_result:
     clicked_location = map_result["last_clicked"]
-    st.session_state["clicked_location"] = clicked_location  # Update session state
-    st.experimental_rerun()  # Refresh the app to update the map with the new marker
-
+    st.write(f"You clicked on location: {clicked_location}")
 
 # Footer with additional information
 st.markdown("""
