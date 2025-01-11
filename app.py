@@ -59,7 +59,7 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # Add a Marker on Click (or any other interactive layer like GeoJSON)
-st.markdown("<h2 style='text-align: center; font-family: Georgia; color: white;'>CLICK ON THE MAP TO SELECT A LOCATION:</h2>", unsafe_allow_html=True)
+st.markdown("<h2 style='text-align: center; font-family: Georgia; color: white;'>Click on the map to select a location:</h2>", unsafe_allow_html=True)
 
 st.markdown("<p style='text-align: center; color: #FF5733;'>This model predicts the likelihood of wildfire occurrence based on environmental factors. Click on the map to choose a location, and the model will fetch environmental data for prediction.</p>", unsafe_allow_html=True)
 
