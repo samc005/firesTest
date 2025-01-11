@@ -1,5 +1,5 @@
 [theme]
 primaryColor = "red"
-backgroundColor = "black"
-secondaryBackgroundColor = "gray"
+backgroundColor = "gray"
+secondaryBackgroundColor = "white"
 textColor = "orange"
