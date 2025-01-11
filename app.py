@@ -1,7 +1,7 @@
 import streamlit as st 
 from joblib import load
 
-#model = load("model.joblib")
+model = load("model.joblib")
 
 
 import streamlit as st
@@ -24,6 +24,6 @@ def predict(model, input):
 
 
 input_features = get_input()
-#prediction = predict(model, input_features)
+prediction = predict(model, input_features)
 #get_prediction(prediction)
-st.write("Results")
+st.write("Results: ", prediction)
