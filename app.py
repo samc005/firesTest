@@ -68,6 +68,8 @@ st.markdown("""
         margin-top: 30px;
         margin-left: 30px;
         margin-right: 30px;
+        padding-top: 0rem;
+        padding-bottom: 0rem;
     }
     </style>
 """, unsafe_allow_html=True)
