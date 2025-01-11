@@ -71,8 +71,23 @@ st.markdown("<h1 style='text-align: center; color:white;'>Click on the map to se
 
 st.markdown("<p style='text-align: center; color: #FF5733;'>This model predicts the likelihood of wildfire occurrence based on environmental factors. Click on the map to choose a location, and the model will fetch environmental data for prediction.</p>", unsafe_allow_html=True)
 
+st.markdown("""
+    <style>
+        .map-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 500px;  # Adjust height as needed
+        }
+    </style>
+""", unsafe_allow_html=True)
+
+st.markdown('<div class="map-container">', unsafe_allow_html=True)
+
 # Render the map with `st_folium`
 map_result = st_folium(m, width=700)
+
+st.markdown('</div>', unsafe_allow_html=True)
 
 # Capture the clicked coordinates from the map result
 if map_result:
