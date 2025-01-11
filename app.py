@@ -69,6 +69,9 @@ st.markdown('<div class="map-container">', unsafe_allow_html=True)
 # Initialize map
 m = folium.Map(location=[40.0, -120.0], zoom_start=5)
 
+folium.Marker(location=[40.0, -120.0], popup="Initial Center").add_to(m) 
+m.add_child(folium.ClickForMarker()) # Add click functionality to the map
+
 # Render the map with `st_folium`
 map_result = st_folium(m, width=700)
 
