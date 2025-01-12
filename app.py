@@ -96,7 +96,7 @@ st.markdown("""
 query_params = st.experimental_get_query_params()
 
 # Get the current page from the URL query parameter
-tab = query_params.get("page", ["home"])[0]  # Default to "home" if no parameter
+tab = query_params.get("page", ["Home"])[0]  # Default to "home" if no parameter
 
 if tab == "Home":
     # Add a Marker on Click (or any other interactive layer like GeoJSON)
