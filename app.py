@@ -130,10 +130,14 @@ if tab == "Home":
 
     st.markdown('</div>', unsafe_allow_html=True)
 
-    if map_result and "last_clicked" in map_result: 
-        clicked_location = map_result["last_clicked"]
-        latitude = clicked_location["lat"]
-        longitude = clicked_location["lng"]
+    
+    if map_result == "None":
+        st.write("Please choose a location")
+    elif map_result and "last_clicked" in map_result: 
+            clicked_location = map_result["last_clicked"]
+            latitude = clicked_location["lat"]
+            longitude = clicked_location["lng"]
+
     
     # Display latitude and longitude separately
     st.markdown(
