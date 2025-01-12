@@ -154,7 +154,7 @@ if tab == "Home":
 
     st.markdown('<div class="map-container">', unsafe_allow_html=True)
 
-    icon_path = 'Downloads/fire.png'
+    icon_path = 'fire.png'
 
     # Initialize map
     m = folium.Map(location=[40.0, -120.0], zoom_start=5)
