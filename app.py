@@ -158,12 +158,12 @@ if tab == "Home":
     """, unsafe_allow_html=True)
 
 elif tab == "resources":
-    st.markdown("<h1 style='text-align: center; color: #FF5733; font-family: Georgia; font-size: 50px;'>WILDFIRE PREDICTION MODEL</h1>", unsafe_allow_html=True)
+    st.markdown("<h1 style='text-align: center; color: #FF5733; font-family: Georgia; font-size: 50px;'>WHERE TO FIND HELP</h1>", unsafe_allow_html=True)
     st.write("Here, we provide resources related to wildfire prevention and safety.")
     st.markdown("[Link to more resources](https://www.nasa.gov/feature/nasa-develops-wildfire-prediction-model)")
 
 elif tab == "chatbot":
-    st.title("Chat with Our Wildfire Chatbot")
+    st.title("TALK TO US")
     st.write("Ask any questions about wildfires and get predictions and safety tips!")
     user_input = st.text_input("Ask a question:")
     if user_input:
