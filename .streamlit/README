@@ -1,0 +1,12 @@
+'''
+welcome to FireWatch!
+The app displays a map of all current fires, updated daily. 
+When the user clicks on the map, we calculate the risk from the closest fire and output whether the user\'s 
+location is safe or within the danger zone. The risk is calculated using current weather and geographical data, 
+and if the user is at risk from the closest fire, we output the predicted burn radius. We provide links and resources 
+for those who need help and helpful tips. And, there\'s a chatbot for anyone who is curious or asking for fire-related questions!
+
+chatbot inspo from https://github.com/andfanilo/social-media-tutorials/tree/master/20230611-stchatbot
+thanks to https://www.redcross.org/get-help/how-to-prepare-for-emergencies/types-of-emergencies/wildfire.html?srsltid=AfmBOorg9hdaKSx7jZKFeUJmGnJu_1xkNgXuB1dHen6Ka-O060hLAtfL for tips
+Created by: Natasha Joshi, Varsha Narasiman, Samprita Chakraborty, Sahasra Boddula
+'''
