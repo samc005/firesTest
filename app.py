@@ -159,12 +159,12 @@ if tab == "Home":
 
 elif tab == "resources":
     st.markdown("<h1 style='text-align: center; color: #FF5733; font-family: Georgia; font-size: 50px;'>WHERE TO FIND HELP</h1>", unsafe_allow_html=True)
-    st.write("<p style='text-align: center; '>Here, we provide resources related to wildfire prevention and safety.</p>", unsafe_allow_html=True)
+    st.markdown("<p style='text-align: center; '>Here, we provide resources related to wildfire prevention and safety.</p>", unsafe_allow_html=True)
     st.markdown("[Link to more resources](https://www.nasa.gov/feature/nasa-develops-wildfire-prediction-model)")
 
 elif tab == "chatbot":
-    st.title("<h1 style='text-align: center; color: #FF5733; font-family: Georgia; font-size: 50px;'>TALK TO US</h1>", unsafe_allow_html=True)
-    st.write("<p style='text-align: center; '>Ask any questions about wildfires and get predictions and safety tips!</p>", unsafe_allow_html=True)
+    st.markdown("<h1 style='text-align: center; color: #FF5733; font-family: Georgia; font-size: 50px;'>TALK TO US</h1>", unsafe_allow_html=True)
+    st.markdown("<p style='text-align: center; '>Ask any questions about wildfires and get predictions and safety tips!</p>", unsafe_allow_html=True)
     user_input = st.text_input("Ask a question:")
     if user_input:
         st.write(f"You asked: {user_input}")
