@@ -148,7 +148,7 @@ elif tab == "resources":
     st.markdown("<p style='text-align: center; color: #FF5733; font-family: Georgia; font-size: 20px;'>Create your own wildfire action plan:</p>", unsafe_allow_html=True)
     st.markdown("<p style='text-align: center; color: white; font-family: Georgia; font-size: 15px;'>https://readyforwildfire.org/prepare-for-wildfire/wildfire-action-plan/</p>", unsafe_allow_html=True)
     st.markdown("<p style='text-align: center; color: #FF5733; font-family: Georgia; font-size: 20px;'>General information about wildfires:</p>", unsafe_allow_html=True)
-    st.markdown("<p style='text-align: cemter; color: white; font-family: Georgia; font-size: 15px;'>https://namica.org/wildfires/</p>", unsafe_allow_html=True)
+    st.markdown("<p style='text-align: center; color: white; font-family: Georgia; font-size: 15px;'>https://namica.org/wildfires/</p>", unsafe_allow_html=True)
     st.markdown("<p style='text-align: center; color: #FF5733; font-family: Georgia; font-size: 20px;'>Helpline for counseling (related to natural/man-made disasters):", unsafe_allow_html=True)
     st.markdown("<p style='text-align: center; color: white; font-family: Georgia; font-size: 15px;'>https://www.samhsa.gov/find-help/helplines/disaster-distress-helpline</p>", unsafe_allow_html=True)
     st.markdown("<p style='text-align: center; color: #FF5733; font-family: Georgia; font-size: 20px;'>Resources to recover from wildfires:</p>", unsafe_allow_html=True)
