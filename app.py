@@ -8,11 +8,14 @@ from getData import get_weather_data
 #styles
 st.markdown("""
     <style>
+    @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@800&display=swap" rel="stylesheet”)
+
     /* Custom theme */
     .css-1d391kg {background-color: black; color: white;}  /* General page background color */
     
     /* Title styling */
     h1 {
+        font-family: “Raleway”, serif;
         text-align: center;
         color: #FF5733;
     }
@@ -140,8 +143,8 @@ if tab == "Home":
     """, unsafe_allow_html=True)
 
 elif tab == "resources":
-    st.markdown("<h1 style='text-align: center; color: #FF5733; font-family: Georgia; font-size: 50px;'>WHERE TO FIND HELP</h1>", unsafe_allow_html=True)
-    st.markdown("<p style='text-align: center; '>Here, we provide resources related to wildfire prevention and safety.</p>", unsafe_allow_html=True)
+    st.markdown("<h1 style='text-align: center; color: #FF5733; font-family: Georgia; font-size: 50px;'>SAFETY TIPS</h1>", unsafe_allow_html=True)
+    st.markdown("<p style='text-align: center; '>Here, we provide information and resources related to wildfire safety and prevention.</p>", unsafe_allow_html=True)
     st.image("https://cdn.kqed.org/wp-content/uploads/sites/10/2025/01/GettyImages-2193000280-1020x653.jpg", caption="Crowd watching Palisades Fire from Santa Monica, California on January 8, 2025. (Tiffany Rose/Getty Images)", use_column_width=True)
     st.markdown("<p style='text-align: center; color: #FF5733; font-family: Georgia; font-size: 20px;'>Contact the Federal Emergency Management Agency (FEMA):</p>", unsafe_allow_html=True)
     st.markdown("<p style='text-align: center; color: white; font-family: Georgia; font-size: 15px;'>https://www.disasterassistance.gov/</p>", unsafe_allow_html=True)
