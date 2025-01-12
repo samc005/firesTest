@@ -89,7 +89,7 @@ tab = query_params.get("page", ["Home"])[0]  # Default to "home" if no parameter
 
 if tab == "Home":
     # Click
-    st.markdown("<h1 style='text-align: center; color: #FF5733; font-family: Georgia; font-size: 50px;'>WILDFIRE PREDICTION MODEL</h1>", unsafe_allow_html=True)
+    st.markdown("<h1 style='text-align: center; color: #FF5733; font-family: Raleway; font-size: 50px;'>WILDFIRE PREDICTION MODEL</h1>", unsafe_allow_html=True)
     st.markdown("<h2 style='text-align: center; color: white; font-size: 25px;'>Click on the map to select a location:</h2>", unsafe_allow_html=True)
 
     st.markdown("<p style='text-align: center; color: #FF5733;'>This model predicts the likelihood of wildfire occurrence based on environmental factors. Click on the map to choose a location, and the model will fetch environmental data for prediction.</p>", unsafe_allow_html=True)
@@ -143,7 +143,7 @@ if tab == "Home":
     """, unsafe_allow_html=True)
 
 elif tab == "resources":
-    st.markdown("<h1 style='text-align: center; color: #FF5733; font-family: Georgia; font-size: 50px;'>SAFETY TIPS</h1>", unsafe_allow_html=True)
+    st.markdown("<h1 style='text-align: center; color: #FF5733; font-family: Raleway; font-size: 50px;'>SAFETY TIPS</h1>", unsafe_allow_html=True)
     st.markdown("<p style='text-align: center; '>Here, we provide information and resources related to wildfire safety and prevention.</p>", unsafe_allow_html=True)
     st.image("https://cdn.kqed.org/wp-content/uploads/sites/10/2025/01/GettyImages-2193000280-1020x653.jpg", caption="Crowd watching Palisades Fire from Santa Monica, California on January 8, 2025. (Tiffany Rose/Getty Images)", use_column_width=True)
     st.markdown("<p style='text-align: center; color: #FF5733; font-family: Georgia; font-size: 20px;'>Contact the Federal Emergency Management Agency (FEMA):</p>", unsafe_allow_html=True)
@@ -165,7 +165,7 @@ elif tab == "resources":
 
 
 elif tab == "chatbot":
-    st.markdown("<h1 style='text-align: center; color: #FF5733; font-family: Georgia; font-size: 50px;'>TALK TO US</h1>", unsafe_allow_html=True)
+    st.markdown("<h1 style='text-align: center; color: #FF5733; font-family: Raleway; font-size: 50px;'>TALK TO US</h1>", unsafe_allow_html=True)
     st.markdown("<p style='text-align: center; '>Ask any questions about wildfires and get predictions and safety tips!</p>", unsafe_allow_html=True)
     user_input = st.text_input("Ask a question:")
     if user_input:
