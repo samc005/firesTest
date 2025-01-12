@@ -66,7 +66,7 @@ st.markdown("""
 
     .navbar a {
         color: white;
-        padding: 14px 20px;
+        padding: 7px 10px;
         text-decoration: none;
         font-size: 18px;
         display: inline-block;
