@@ -147,7 +147,7 @@ tab = query_params.get("page", ["Home"])[0]  # Default to "home" if no parameter
 
 if tab == "Home":
     # Click
-    st.markdown("<h1 style='text-align: center; color: #FF5733; font-family: Raleway; font-size: 50px;'>WILDFIRE PREDICTION MODEL</h1>", unsafe_allow_html=True)
+    st.markdown("<h1 style='text-align: center; color: #FF5733; font-family: Georgia; font-size: 50px;'>WILDFIRE PREDICTION MODEL</h1>", unsafe_allow_html=True)
     st.markdown("<h2 style='text-align: center; color: white; font-size: 25px;'>Click on the map to select a location:</h2>", unsafe_allow_html=True)
 
     st.markdown("<p style='text-align: center; color: #FF5733;'>This model predicts the likelihood of wildfire occurrence based on environmental factors. Click on the map to choose a location, and the model will fetch environmental data for prediction.</p>", unsafe_allow_html=True)
@@ -157,8 +157,20 @@ if tab == "Home":
     # Initialize map
     m = folium.Map(location=[40.0, -120.0], zoom_start=5)
 
-    folium.Marker(location=[40.0, -120.0]).add_to(m) 
-    m.add_child(folium.ClickForMarker()) # Add click functionality to the map
+    def on_map_click(event):
+        lat, lon = event.latlng
+        folium.Marker(
+            location=[lat, lon],
+            icon=folium.Icon(icon="cloud", icon_color="orange", color="red") 
+        ).add_to(m)
+
+    # Register the click event handler
+    m.on_click(on_map_click)
+
+
+
+    #folium.Marker(location=[40.0, -120.0]).add_to(m) 
+    #m.add_child(folium.ClickForMarker()) # Add click functionality to the map
 
     # Render map 
     map_result = st_folium(m, width=700)
