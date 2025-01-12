@@ -147,6 +147,7 @@ st.markdown("""
     .navbar a:hover {
         background-color: #ddd;
         color: black;
+        transition: 0.3s ease-in;
     }
     .content {
         margin-top: 60px; /* Add margin to push content below the navbar */
