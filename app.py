@@ -285,7 +285,7 @@ elif tab == "resources":
     except Exception as e:
         st.error(f"An error occurred: {e}")
    
-    st.markdown("<p style='text-align: center; color: #FF5733; font-size: 24px;'>Tips to be Prepared</p>", unsafe_allow_html=True)
+    st.markdown("<p style='text-align: center; color: #FF5733; font-size: 26px;'>Tips to be Prepared</p>", unsafe_allow_html=True)
     st.markdown("<p style ='text-align: left; color: white; font-size: 18px;'>Have emergency supplies prepared. Pack essentials like water, food, and medicine.</p>", unsafe_allow_html=True)
     st.markdown("<p style ='text-align: left; color: white; font-size: 18px;'>Monitor fires and the weather around you regularly.</p>", unsafe_allow_html=True)
     st.markdown("<p style ='text-align: left; color: white; font-size: 18px;'>Learn emergency skills such as CPR and First Aid.</p>", unsafe_allow_html=True)
@@ -294,7 +294,7 @@ elif tab == "resources":
 
     st.markdown("""
     <div class='footer' style='text-align: left; font-size: 20px;'>
-        <p style='text-align: center; color: #FF5733; font-size: 24px;'>Resources</p>
+        <p style='text-align: center; color: #FF5733; font-size: 26px;'>Resources</p>
         <p><a href='https://www.disasterassistance.gov/' target='_blank'>Federal Emergency Management Agency (FEMA)</a></p>
         <p><a href='https://readyforwildfire.org/prepare-for-wildfire/wildfire-action-plan/' target='_blank'>Create your own wildfire action plan</a></p>
         <p><a href='https://namica.org/wildfires/' target='_blank'>General information about wildfires</a></p>
