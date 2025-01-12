@@ -70,7 +70,7 @@ def is_within_radius(predicted_radius, distance):
    if distance <= max_radius:
       return f"You are within the high-risk radius of {danger_radius:.3} km."
    else:
-      return f"You are safe outside the high-risk radius of {danger_radius:.3} km."
+      return f"You are safe away from the nearest fire."
 
 def print_result(prediction, fire_data):
    point = (latitude, longitude)  # Example point coordinates
