@@ -12,6 +12,17 @@ import datetime
 from getData import get_weather_data
 from getData import get_fire_data
 
+from dataclasses import dataclass
+from typing import Literal
+import streamlit as st
+
+from langchain import OpenAI
+from langchain.callbacks import get_openai_callback
+from langchain.chains import ConversationChain
+from langchain.chains.conversation.memory import ConversationSummaryMemory
+import streamlit.components.v1 as components
+
+
 @st.cache_resource
 def load_model():
     return load('model.joblib')
