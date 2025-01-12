@@ -154,12 +154,15 @@ if tab == "Home":
 
     st.markdown('<div class="map-container">', unsafe_allow_html=True)
 
+    icon_path = 'Downloads/fire.png'
+
     # Initialize map
     m = folium.Map(location=[40.0, -120.0], zoom_start=5)
 
-    fire_icon = folium.Icon(icon="fire", icon_color="orange", color="red")
+    fire_icon = folium.CustomIcon(icon_path, icon_size=(30, 30))
 
-    folium.ClickForMarker(popup="Fire Marker", icon=fire_icon).add_to(m)
+    # Add it to the map
+    m.add_child(folium.ClickForMarker(popup="Fire Marker", icon=fire_icon))
 
     # Render map 
     map_result = st_folium(m, width=700)
