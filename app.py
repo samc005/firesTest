@@ -258,9 +258,110 @@ elif tab == "resources":
     st.markdown("<p style='text-align: center;'><a href='https://readyforwildfire.org/post-wildfire/who-can-help' target='_blank' style='color: white; font-family: Georgia; font-size: 15px; text-decoration: none;'>https://readyforwildfire.org/post-wildfire/who-can-help</a></p>", unsafe_allow_html=True)    
     
 elif tab == "chatbot":
+    @dataclass
+    class Message: #keeps track of messages
+        origin: Literal["human", "AI"]
+        message: str
+
+    def load_css():
+        with open("static/styles.css", "r") as f:
+            css = f"<style>{f.read()}<\style>"
+            st.markdown(css, unsafe_allow_html=True)
+
+    def init_state():
+        if "history" not in st.session_state:
+            st.session_state.history = []
+        if "token_count" not in st.session_state:
+            st.session_state.token_count = 0
+        if "conversation" not iin st.session_state:
+            llm = OpenAI(temperature=0, openai_api_key=st.secrets["openai_api_key"], modName="text-davinci-003")
+            st.session_state.conversation = ConversationChain(
+                llm = llm
+                mem = ConversationSummaryMemory(llm=llm)
+
+    def on_click_callback():
+        with get_openai_callback() as cb:
+            prompt = st.session_state.prompt
+            response = st.session_state.conversation.run(prompt)
+            st.session_state.history.append(
+                Message("human", prompt)
+            )
+            st.session_state.history.append(
+                Message("AI", response)
+            )
+            st.session_state.token_count += cb.total_tokens
+
+    load_css()
+    init_state()
+
     st.markdown("<h1 style='text-align: center; color: #FF5733; font-family: Georgia; font-size: 50px;'>TALK TO US</h1>", unsafe_allow_html=True)
     st.markdown("<p style='text-align: center; '>Ask any questions about wildfires and get predictions and safety tips!</p>", unsafe_allow_html=True)
-    user_input = st.text_input("Ask a question:")
-    if user_input:
-        st.write(f"You asked: {user_input}")
-        st.write("Chatbot response: [Simulated Answer] Stay safe and prepared for wildfires!")     
+
+    chat_hold = st.container()
+    prompt_hold = st.form("chat-form")
+    credit_hold = st.empty()
+
+    with chat_hold:
+    for chat in st.session_state.history:
+        div = f"""
+    <div class="chat-row 
+        {'' if chat.origin == 'AI' else 'row-reverse'}">
+        <img class="chat-icon" src="app/static/{
+            'ai_icon.png' if chat.origin == 'AI' 
+                          else 'user_icon.png'}"
+             width=32 height=32>
+        <div class="chat-bubble
+        {'ai-bubble' if chat.origin == 'AI' else 'human-bubble'}">
+            &#8203;{chat.message}
+        </div>
+    </div>
+            """
+            st.markdown(div, unsafe_allow_html=True)
+        
+        for _ in range(3):
+            st.markdown("")
+    
+    with prompt_hold:
+        st.markdown("**Chat**")
+        cols = st.columns((6, 1))
+        cols[0].text_input(
+            "Chat",
+            value="Hello!",
+            label_visibility="collapsed",
+            key="prompt",
+        )
+        cols[1].form_submit_button(
+            "Submit", 
+            type="primary", 
+            on_click=on_click_callback, 
+        )
+    
+    credit_hold.caption(f"""
+    Used {st.session_state.token_count} tokens \n
+    Debug Langchain conversation: 
+    {st.session_state.conversation.memory.buffer}
+    """)
+
+    components.html("""
+    <script>
+    const streamlitDoc = window.parent.document;
+
+    const buttons = Array.from(
+        streamlitDoc.querySelectorAll('.stButton > button')
+    );
+    const submitButton = buttons.find(
+        el => el.innerText === 'Submit'
+    );
+    
+    streamlitDoc.addEventListener('keydown', function(e) {
+        switch (e.key) {
+            case 'Enter':
+                submitButton.click();
+                break;
+        }
+    });
+    </script>
+    """, 
+        height=0,
+        width=0,
+    )
