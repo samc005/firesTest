@@ -130,25 +130,26 @@ if tab == "Home":
 
     st.markdown('</div>', unsafe_allow_html=True)
 
-    
-    if "None" in "last_clicked":
-        st.write("Please choose a location")
-    elif map_result and "last_clicked" in map_result: 
-            clicked_location = map_result["last_clicked"]
+    if map_result and "last_clicked" in map_result: 
+        clicked_location = map_result["last_clicked"]
+
+        if clicked_location and "lat" in clicked_location and "lng" in clicked_location:
             latitude = clicked_location["lat"]
             longitude = clicked_location["lng"]
 
-    
     # Display latitude and longitude separately
-    st.markdown(
-        f"""
-        <p style='text-align: center;'>
-            <strong>Latitude:</strong> {latitude:.6f} <br>
-            <strong>Longitude:</strong> {longitude:.6f}
-        </p>
-        """,
-        unsafe_allow_html=True,
-    )
+            st.markdown(
+                f"""
+                <p style='text-align: center;'>
+                    <strong>Latitude:</strong> {latitude:.6f} <br>
+                    <strong>Longitude:</strong> {longitude:.6f}
+                </p>
+                """,
+                unsafe_allow_html=True,
+            )
+        else:
+            st.write("Please click on the map.")
+
 
     # Footer
     st.markdown("""
