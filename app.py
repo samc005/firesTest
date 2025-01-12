@@ -30,7 +30,7 @@ import folium
 from streamlit_folium import st_folium
 import random
 
-# Add custom styles
+#styles
 st.markdown("""
     <style>
     /* Custom theme */
@@ -55,7 +55,7 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
-# Add custom CSS for the navigation bar
+#navigation bar
 st.markdown("""
     <style>
     body {
@@ -64,8 +64,11 @@ st.markdown("""
     }
     .navbar {
         background-color: #FF5733;
-        padding: 5px;
+        padding: 5px 0;
         text-align: center;
+        top: 0;
+        width: 100%;
+        z-index: 1000;
     }
 
     .navbar a {
@@ -80,11 +83,13 @@ st.markdown("""
         background-color: #ddd;
         color: black;
     }
+    .content {
+        margin-top: 60px; /* Add margin to push content below the navbar */
+    }
     </style>
 """, unsafe_allow_html=True)
 
-# Display the navbar with tabs (links)
-# Navbar with links
+#tabs (links)
 st.markdown("""
     <div class="navbar">
         <a href="">Home</a>
@@ -95,14 +100,14 @@ st.markdown("""
 
 st.markdown("<h1 style='text-align: center; color: #FF5733; font-family: Georgia; font-size: 50px;'>WILDFIRE PREDICTION MODEL</h1>", unsafe_allow_html=True)
 
-# Get query params from the URL
+# Get query params from URL
 query_params = st.experimental_get_query_params()
 
-# Get the current page from the URL query parameter
+#current page from URL query param
 tab = query_params.get("page", ["Home"])[0]  # Default to "home" if no parameter
 
 if tab == "Home":
-    # Add a Marker on Click (or any other interactive layer like GeoJSON)
+    # Click
     st.markdown("<h2 style='text-align: center; font-family: Georgia; color: white;'>Click on the map to select a location:</h2>", unsafe_allow_html=True)
 
     st.markdown("<p style='text-align: center; color: #FF5733;'>This model predicts the likelihood of wildfire occurrence based on environmental factors. Click on the map to choose a location, and the model will fetch environmental data for prediction.</p>", unsafe_allow_html=True)
@@ -115,7 +120,7 @@ if tab == "Home":
     folium.Marker(location=[40.0, -120.0]).add_to(m) 
     m.add_child(folium.ClickForMarker()) # Add click functionality to the map
 
-    # Render the map with `st_folium`
+    # Render map 
     map_result = st_folium(m, width=700)
 
     st.markdown('</div>', unsafe_allow_html=True)
@@ -124,7 +129,7 @@ if tab == "Home":
         clicked_location = map_result["last_clicked"]
         st.write(f"You clicked on location: {clicked_location}")
 
-    # Footer with additional information
+    # Footer
     st.markdown("""
         <div style="text-align: center; font-size: 14px; color: gray;">
             <p>Data sources: National Weather Service, Fire Prediction Model</p>
