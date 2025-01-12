@@ -65,7 +65,7 @@ def print_result(prediction):
 #styles
 st.markdown("""
     <style>
-    @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@800&display=swap" rel="stylesheet”)
+    @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@800&display=swap' rel="stylesheet")
 
     /* Custom theme */
     .css-1d391kg {background-color: black; color: white;}  /* General page background color */
@@ -122,6 +122,7 @@ st.markdown("""
     .navbar a:hover {
         background-color: #ddd;
         color: black;
+        transition: 0.3s ease; 
     }
     .content {
         margin-top: 60px; /* Add margin to push content below the navbar */
