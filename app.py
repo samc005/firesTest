@@ -60,7 +60,7 @@ st.markdown("""
     <style>
     .navbar {
         background-color: #FF5733;
-        padding: 10px;
+        padding: 5px;
         text-align: center;
     }
 
