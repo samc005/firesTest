@@ -157,17 +157,11 @@ if tab == "Home":
     # Initialize map
     m = folium.Map(location=[40.0, -120.0], zoom_start=5)
 
-    def on_map_click(event):
-        lat, lon = event.latlng
-        folium.Marker(
-            location=[lat, lon],
-            icon=folium.Icon(icon="cloud", icon_color="orange", color="red") 
-        ).add_to(m)
-
-    # Register the click event handler
-    m.on_click(on_map_click)
-
-
+    # Add a click handler for placing fire markers with a custom icon
+    folium.ClickForMarker(
+        popup="Fire Marker", 
+        icon=folium.Icon(icon="cloud", icon_color="orange", color="red")
+    ).add_to(m)
 
     #folium.Marker(location=[40.0, -120.0]).add_to(m) 
     #m.add_child(folium.ClickForMarker()) # Add click functionality to the map
