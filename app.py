@@ -12,6 +12,11 @@ import datetime
 from getData import get_weather_data
 from getData import get_fire_data
 
+st.set_page_config(
+    page_title="FireWatch",  # Title that will appear in the browser tab
+    page_icon="🔥",          # Icon that will appear in the browser tab (can use text or image)
+)
+
 @st.cache_resource
 def load_model():
     return load('model.joblib')
@@ -272,7 +277,14 @@ elif tab == "resources":
     st.markdown("<h3 style='text-align: center; color: white; font-family: Tahoma;'>Information and resources related to wildfire safety and prevention</h3>", unsafe_allow_html=True)
     st.write('')
     st.write('')
-    st.image("https://cdn.kqed.org/wp-content/uploads/sites/10/2025/01/GettyImages-2193000280-1020x653.jpg", caption="Crowd watching Palisades Fire from Santa Monica, California on January 8, 2025. (Tiffany Rose/Getty Images)", use_container_width=False)
+    try:
+        st.image(
+        "https://cdn.kqed.org/wp-content/uploads/sites/10/2025/01/GettyImages-2193000280-1020x653.jpg",
+        caption="Crowd watching Palisades Fire from Santa Monica, California on January 8, 2025. (Tiffany Rose/Getty Images)",
+        use_container_width=False
+        )
+    except Exception as e:
+        st.error(f"An error occurred: {e}")
    
     st.markdown("<p style='text-align: center; color: #FF5733; font-size: 24px;'>Tips to be Prepared</p>", unsafe_allow_html=True)
     st.markdown("<p style ='text-align: left; color: white; font-size: 18px;'>Have emergency supplies prepared. Pack essentials like water, food, and medicine.</p>", unsafe_allow_html=True)
