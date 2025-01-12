@@ -132,9 +132,9 @@ st.markdown("""
 #tabs (links)
 st.markdown("""
     <div class="navbar">
-        <a href="">Home</a>
-        <a href="?page=resources">Resources</a>
-        <a href="?page=chatbot">Chatbot</a>
+        <a href="?page=Home" class="{% if page == 'Home' %}active{% endif %}">Home</a>
+        <a href="?page=resources" class="{% if page == 'resources' %}active{% endif %}">Resources</a>
+        <a href="?page=chatbot" class="{% if page == 'chatbot' %}active{% endif %}">Chatbot</a>
     </div>
 """, unsafe_allow_html=True)
 
@@ -196,7 +196,7 @@ if tab == "Home":
                 user_input += str(weather_data['precipitation'])
                 input_data = prepare_data(user_input)
                 prediction = predict(input_data)
-                st.write(print_result(prediction, fire_data))
+                st.markdown(f"<p style='text-align: center;'>{print_result(prediction)}</p>", unsafe_allow_html=True)
 
     # Display latitude and longitude separately
             st.markdown(
