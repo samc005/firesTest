@@ -12,7 +12,19 @@ import datetime
 from getData import get_weather_data
 from getData import get_fire_data
 
-model = load('model.joblib')
+@st.cache_resource
+def load_model():
+    return load('model.joblib')
+
+model = load_model()
+
+@st.cache_data(ttl=600)  # Cache for 10 minutes
+def get_weather_data_cached(latitude, longitude):
+    return get_weather_data(latitude, longitude)
+
+@st.cache_data(ttl=600)
+def get_fire_data_cached(latitude, longitude):
+    return get_fire_data(latitude, longitude)
 
 # Function to prepare data for the model
 def prepare_data(input_data):
@@ -185,8 +197,8 @@ if tab == "Home":
             latitude = clicked_location["lat"]
             longitude = clicked_location["lng"]
                         
-            weather_data = get_weather_data(latitude, longitude)
-            fire_data = get_fire_data(latitude, longitude)
+            weather_data = get_weather_data_cached(latitude, longitude)
+            fire_data = get_fire_data_cached(latitude, longitude)
 
             if weather_data:
                 current_date = datetime.datetime.now()
