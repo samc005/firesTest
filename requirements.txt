@@ -9,6 +9,9 @@ joblib
 beautifulsoup4
 geocoder
 langchain
+langchain.callbacks
+langchain.chains
+langchain.chains.conversation.memory
 dataclasses
 typing
 streamlit.components.v1
