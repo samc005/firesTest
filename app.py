@@ -285,7 +285,8 @@ elif tab == "chatbot":
         if "token_count" not in st.session_state:
             st.session_state.token_count = 0
         if "conversation" not in st.session_state:
-            llm = OpenAI(temperature=0, openai_api_key=st.secrets["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"], modName="text-davinci-003")
+            llm = OpenAI(temperature=0, openai_api_key=st.secrets["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
+"], modName="text-davinci-003")
             st.session_state.conversation = ConversationChain(
                 llm = llm,
                 mem = ConversationSummaryMemory(llm=llm)
