@@ -160,7 +160,15 @@ if tab == "Home":
 elif tab == "resources":
     st.markdown("<h1 style='text-align: center; color: #FF5733; font-family: Georgia; font-size: 50px;'>WHERE TO FIND HELP</h1>", unsafe_allow_html=True)
     st.markdown("<p style='text-align: center; '>Here, we provide resources related to wildfire prevention and safety.</p>", unsafe_allow_html=True)
-    st.markdown("[Link to more resources](https://www.nasa.gov/feature/nasa-develops-wildfire-prediction-model)")
+    st.markdown("<h1 style='text-align: center; color: #FF5733; font-family: Georgia; font-size: 30px;'>Contact the Federal Emergency Management Agency: https://www.disasterassistance.gov/</h1>", unsafe_allow_html=True)
+    st.markdown("<h1 style='text-align: center; color: #FF5733; font-family: Georgia; font-size: 30px;'>Create your own wildfire action plan: https://readyforwildfire.org/prepare-for-wildfire/wildfire-action-plan/</h1>", unsafe_allow_html=True)
+    st.markdown("<h1 style='text-align: center; color: #FF5733; font-family: Georgia; font-size: 30px;'>General information about wildfires: https://namica.org/wildfires/</h1>", unsafe_allow_html=True)
+    st.markdown("<h1 style='text-align: center; color: #FF5733; font-family: Georgia; font-size: 30px;'>Helpline for counseling (related to natural/man-made disasters): https://www.samhsa.gov/find-help/helplines/disaster-distress-helpline</h1>", unsafe_allow_html=True)
+    st.markdown("<h1 style='text-align: center; color: #FF5733; font-family: Georgia; font-size: 30px;'>Resources to recover from wildfires: https://www.cdfa.ca.gov/firerecovery/</h1>", unsafe_allow_html=True)
+    st.markdown("<h1 style='text-align: center; color: #FF5733; font-family: Georgia; font-size: 30px;'>External list of organizations/programs that can help with wildfire recovery: https://readyforwildfire.org/post-wildfire/who-can-help/</h1>", unsafe_allow_html=True)
+
+    
+
 
 elif tab == "chatbot":
     st.markdown("<h1 style='text-align: center; color: #FF5733; font-family: Georgia; font-size: 50px;'>TALK TO US</h1>", unsafe_allow_html=True)
