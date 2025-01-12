@@ -157,7 +157,7 @@ if tab == "Home":
     m = folium.Map(location=[40.0, -120.0], zoom_start=5)
 
     folium.Marker(location=[40.0, -120.0]).add_to(m) 
-    m.add_child(folium.ClickForMarker(color="blue")) # Add click functionality to the map
+    m.add_child(folium.ClickForMarker()) # Add click functionality to the map
     
 
 
