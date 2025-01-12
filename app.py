@@ -160,6 +160,7 @@ if tab == "Home":
 elif tab == "resources":
     st.markdown("<h1 style='text-align: center; color: #FF5733; font-family: Georgia; font-size: 50px;'>WHERE TO FIND HELP</h1>", unsafe_allow_html=True)
     st.markdown("<p style='text-align: center; '>Here, we provide resources related to wildfire prevention and safety.</p>", unsafe_allow_html=True)
+    st.image("https://cdn.kqed.org/wp-content/uploads/sites/10/2025/01/GettyImages-2193000280-1020x653.jpg", caption="Crowd watching Palisades Fire from Santa Monica, California on January 8, 2025. (Tiffany Rose/Getty Images)", use_column_width=True)
     st.markdown("<p style='text-align: left; color: #FF5733; font-family: Georgia; font-size: 20px;'>Contact the Federal Emergency Management Agency: https://www.disasterassistance.gov/</p>", unsafe_allow_html=True)
     st.markdown("<p style='text-align: left; color: #FF5733; font-family: Georgia; font-size: 20px;'>Create your own wildfire action plan: https://readyforwildfire.org/prepare-for-wildfire/wildfire-action-plan/</p>", unsafe_allow_html=True)
     st.markdown("<p style='text-align: left; color: #FF5733; font-family: Georgia; font-size: 20px;'>General information about wildfires: https://namica.org/wildfires/</p>", unsafe_allow_html=True)
