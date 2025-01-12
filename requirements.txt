@@ -8,4 +8,7 @@ streamlit_folium
 joblib
 beautifulsoup4
 geocoder
+langchain
+dataclasses
+typing
 
