@@ -52,9 +52,9 @@ def is_within_radius(predicted_radius, point, center=(0, 0)):
 
    # Check if the point is within the circle's range
    if min_radius <= distance <= max_radius:
-      return st.markdown("<p style='text-align: center;'>You are within the high-risk radius of {predicted_radius[0]} (±20% error).</p>", unsafe_allow_html=True)
+      return f"<p style='text-align: center;'>You are within the high-risk radius of {predicted_radius[0]} (±20% error).</p>"
    else:
-      return st.markdown("<p style='text-align: center;'>You are safe outside the high-risk radius of {predicted_radius[0]} (±20% error).</p>", unsafe_allow_html=True)
+      return f"<p style='text-align: center;'>You are safe outside the high-risk radius of {predicted_radius[0]} (±20% error).</p>"
 
 def print_result(prediction):
    point = (latitude, longitude)  # Example point coordinates
@@ -182,7 +182,7 @@ if tab == "Home":
                 user_input += str(weather_data['precipitation'])
                 input_data = prepare_data(user_input)
                 prediction = predict(input_data)
-                st.write(print_result(prediction))
+                st.markdown(f"<p style='text-align: center;'>{print_result(prediction)}</p>", unsafe_allow_html=True)
 
     # Display latitude and longitude separately
             st.markdown(
