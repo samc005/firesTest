@@ -215,11 +215,12 @@ elif tab == "resources":
     st.image("https://cdn.kqed.org/wp-content/uploads/sites/10/2025/01/GettyImages-2193000280-1020x653.jpg", caption="Crowd watching Palisades Fire from Santa Monica, California on January 8, 2025. (Tiffany Rose/Getty Images)", use_column_width=True)
    
     st.markdown("<p style='text-align: center; color: #FF5733; font-family: Georgia; font-size: 20px;'>Some tips: </p>", unsafe_allow_html=True)
-    st.markdown("<p style ='text-align: center; color: white; font-family: Georgia; font-size: 15px;'>Tip 1.</p>", unsafe_allow_html=True)
-    st.markdown("<p style ='text-align: center; color: white; font-family: Georgia; font-size: 15px;'>Tip 2.</p>", unsafe_allow_html=True)
-    st.markdown("<p style ='text-align: center; color: white; font-family: Georgia; font-size: 15px;'>Tip 3.</p>", unsafe_allow_html=True)
-    st.markdown("<p style ='text-align: center; color: white; font-family: Georgia; font-size: 15px;'>Tip 4.</p>", unsafe_allow_html=True)
-    st.markdown("<p style ='text-align: center; color: white; font-family: Georgia; font-size: 15px;'>Tip 5.</p>", unsafe_allow_html=True)
+    st.markdown("<p style ='text-align: center; color: white; font-family: Georgia; font-size: 15px;'>Have emergency supplies prepared. Pack essentials like water, food, and medicine.</p>", unsafe_allow_html=True)
+    st.markdown("<p style ='text-align: center; color: white; font-family: Georgia; font-size: 15px;'>Monitor fires and the weather around you regularly.</p>", unsafe_allow_html=True)
+    st.markdown("<p style ='text-align: center; color: white; font-family: Georgia; font-size: 15px;'>Learn emergency skills such as CPR and First Aid.</p>", unsafe_allow_html=True)
+    st.markdown("<p style ='text-align: center; color: white; font-family: Georgia; font-size: 15px;'>Plan to not have access to electricity or the internet.
+</p>", unsafe_allow_html=True)
+    st.markdown("<p style ='text-align: center; color: white; font-family: Georgia; font-size: 15px;'>Keep personal records safe.</p>", unsafe_allow_html=True)
     
     st.markdown("<p style='text-align: center; color: #FF5733; font-family: Georgia; font-size: 20px;'>Contact the Federal Emergency Management Agency (FEMA):</p>", unsafe_allow_html=True)
     st.markdown("<p style='text-align: center; color: white; font-family: Georgia; font-size: 15px;'>https://www.disasterassistance.gov/</p>", unsafe_allow_html=True)
