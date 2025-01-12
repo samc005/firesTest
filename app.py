@@ -159,13 +159,13 @@ if tab == "Home":
 
 elif tab == "resources":
     st.markdown("<h1 style='text-align: center; color: #FF5733; font-family: Georgia; font-size: 50px;'>WHERE TO FIND HELP</h1>", unsafe_allow_html=True)
-    st.markdown("<p style='text-align: center; '>Here, we provide resources related to wildfire prevention and safety.</p>", unsafe_allow_html=True)
-    st.markdown("<p style='text-align: center; color: #FF5733; font-family: Georgia; font-size: 20px;'>Contact the Federal Emergency Management Agency: https://www.disasterassistance.gov/</p>", unsafe_allow_html=True)
-    st.markdown("<p style='text-align: center; color: #FF5733; font-family: Georgia; font-size: 20px;'>Create your own wildfire action plan: https://readyforwildfire.org/prepare-for-wildfire/wildfire-action-plan/</p>", unsafe_allow_html=True)
-    st.markdown("<p style='text-align: center; color: #FF5733; font-family: Georgia; font-size: 20px;'>General information about wildfires: https://namica.org/wildfires/</p>", unsafe_allow_html=True)
-    st.markdown("<p style='text-align: center; color: #FF5733; font-family: Georgia; font-size: 20px;'>Helpline for counseling (related to natural/man-made disasters): https://www.samhsa.gov/find-help/helplines/disaster-distress-helpline</p>", unsafe_allow_html=True)
-    st.markdown("<p style='text-align: center; color: #FF5733; font-family: Georgia; font-size: 20px;'>Resources to recover from wildfires: https://www.cdfa.ca.gov/firerecovery/</p>", unsafe_allow_html=True)
-    st.markdown("<p style='text-align: center; color: #FF5733; font-family: Georgia; font-size: 20px;'>External list of organizations/programs that can help with wildfire recovery: https://readyforwildfire.org/post-wildfire/who-can-help/</p>", unsafe_allow_html=True)
+    st.markdown("<p style='text-align: left; '>Here, we provide resources related to wildfire prevention and safety.</p>", unsafe_allow_html=True)
+    st.markdown("<p style='text-align: left; color: #FF5733; font-family: Georgia; font-size: 20px;'>Contact the Federal Emergency Management Agency: https://www.disasterassistance.gov/</p>", unsafe_allow_html=True)
+    st.markdown("<p style='text-align: left; color: #FF5733; font-family: Georgia; font-size: 20px;'>Create your own wildfire action plan: https://readyforwildfire.org/prepare-for-wildfire/wildfire-action-plan/</p>", unsafe_allow_html=True)
+    st.markdown("<p style='text-align: left; color: #FF5733; font-family: Georgia; font-size: 20px;'>General information about wildfires: https://namica.org/wildfires/</p>", unsafe_allow_html=True)
+    st.markdown("<p style='text-align: left; color: #FF5733; font-family: Georgia; font-size: 20px;'>Helpline for counseling (related to natural/man-made disasters): https://www.samhsa.gov/find-help/helplines/disaster-distress-helpline</p>", unsafe_allow_html=True)
+    st.markdown("<p style='text-align: left; color: #FF5733; font-family: Georgia; font-size: 20px;'>Resources to recover from wildfires: https://www.cdfa.ca.gov/firerecovery/</p>", unsafe_allow_html=True)
+    st.markdown("<p style='text-align: left; color: #FF5733; font-family: Georgia; font-size: 20px;'>External list of organizations/programs that can help with wildfire recovery: https://readyforwildfire.org/post-wildfire/who-can-help/</p>", unsafe_allow_html=True)
 
     
 
