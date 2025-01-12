@@ -30,9 +30,6 @@ import folium
 from streamlit_folium import st_folium
 import random
 
-st.markdown("<h1 style='text-align: center; color: #FF5733; font-family: Georgia; font-size: 50px;'>WILDFIRE PREDICTION MODEL</h1>", unsafe_allow_html=True)
-
-
 # Add custom styles
 st.markdown("""
     <style>
@@ -91,6 +88,8 @@ st.markdown("""
         <a href="?page=chatbot">Chatbot</a>
     </div>
 """, unsafe_allow_html=True)
+
+st.markdown("<h1 style='text-align: center; color: #FF5733; font-family: Georgia; font-size: 50px;'>WILDFIRE PREDICTION MODEL</h1>", unsafe_allow_html=True)
 
 # Get query params from the URL
 query_params = st.experimental_get_query_params()
