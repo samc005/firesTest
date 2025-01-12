@@ -52,10 +52,9 @@ def is_within_radius(predicted_radius, point, center=(0, 0)):
 
    # Check if the point is within the circle's range
    if min_radius <= distance <= max_radius:
-      return f"<p style='text-align: center;'>You are within the high-risk radius of {predicted_radius[0]} (±20% error).</p>"
+      return st.markdown("<p style='text-align: center;'>You are within the high-risk radius of {predicted_radius[0]} (±20% error).</p>", unsafe_allow_html=True)
    else:
-      return f"<p style='text-align: center;'>You are safe outside the high-risk radius of {predicted_radius[0]} (±20% error).</p>"
-
+      return st.markdown("<p style='text-align: center;'>You are safe outside the high-risk radius of {predicted_radius[0]} (±20% error).</p>", unsafe_allow_html=True)
 
 def print_result(prediction):
    point = (latitude, longitude)  # Example point coordinates
