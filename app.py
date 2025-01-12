@@ -247,19 +247,16 @@ elif tab == "resources":
     st.markdown("<p style='text-align: center; color: #FF5733; font-family: Georgia; font-size: 20px;'>Contact the Federal Emergency Management Agency (FEMA):</p>", unsafe_allow_html=True)
     st.markdown("<p style='text-align: center;'><a href='https://www.disasterassistance.gov/' target='_blank' style='color: white; font-family: Georgia; font-size: 15px; text-decoration: none;'>https://www.disasterassistance.gov/</a></p>", unsafe_allow_html=True)
     st.markdown("<p style='text-align: center; color: #FF5733; font-family: Georgia; font-size: 20px;'>Create your own wildfire action plan:</p>", unsafe_allow_html=True)
-    st.markdown("<p style='text-align: center; color: white; font-family: Georgia; font-size: 15px;'>https://readyforwildfire.org/prepare-for-wildfire/wildfire-action-plan/</p>", unsafe_allow_html=True)
+    st.markdown("<p style='text-align: center;'><a href='https://readyforwildfire.org/prepare-for-wildfire/wildfire-action-plan/' target='_blank' style='color: white; font-family: Georgia; font-size: 15px; text-decoration: none;'>https://www.disasterassistance.gov/</a></p>", unsafe_allow_html=True)
     st.markdown("<p style='text-align: center; color: #FF5733; font-family: Georgia; font-size: 20px;'>General information about wildfires:</p>", unsafe_allow_html=True)
-    st.markdown("<p style='text-align: center; color: white; font-family: Georgia; font-size: 15px;'>https://namica.org/wildfires/</p>", unsafe_allow_html=True)
+    st.markdown("<p style='text-align: center;'><a href='https://namica.org/wildfires/' target='_blank' style='color: white; font-family: Georgia; font-size: 15px; text-decoration: none;'>https://www.disasterassistance.gov/</a></p>", unsafe_allow_html=True)
     st.markdown("<p style='text-align: center; color: #FF5733; font-family: Georgia; font-size: 20px;'>Helpline for counseling (related to natural/man-made disasters):", unsafe_allow_html=True)
-    st.markdown("<p style='text-align: center; color: white; font-family: Georgia; font-size: 15px;'>https://www.samhsa.gov/find-help/helplines/disaster-distress-helpline</p>", unsafe_allow_html=True)
+    st.markdown("<p style='text-align: center;'><a href='https://www.samhsa.gov/find-help/helplines/disaster-distress-helpline' target='_blank' style='color: white; font-family: Georgia; font-size: 15px; text-decoration: none;'>https://www.disasterassistance.gov/</a></p>", unsafe_allow_html=True)
     st.markdown("<p style='text-align: center; color: #FF5733; font-family: Georgia; font-size: 20px;'>Resources to recover from wildfires:</p>", unsafe_allow_html=True)
-    st.markdown("<p style='text-align: center; color: white; font-family: Georgia; font-size: 15px;'>https://www.cdfa.ca.gov/firerecovery/</p>", unsafe_allow_html=True)
+    st.markdown("<p style='text-align: center;'><a href='https://www.cdfa.ca.gov/firerecovery/' target='_blank' style='color: white; font-family: Georgia; font-size: 15px; text-decoration: none;'>https://www.disasterassistance.gov/</a></p>", unsafe_allow_html=True)
     st.markdown("<p style='text-align: center; color: #FF5733; font-family: Georgia; font-size: 20px;'>External list of organizations/programs that can help with wildfire recovery:</p>", unsafe_allow_html=True)
-    st.markdown("<p style='text-align: center; color: white; font-family: Georgia; font-size: 15px;'>https://readyforwildfire.org/post-wildfire/who-can-help</p>", unsafe_allow_html=True)
+    st.markdown("<p style='text-align: center;'><a href='https://readyforwildfire.org/post-wildfire/who-can-help' target='_blank' style='color: white; font-family: Georgia; font-size: 15px; text-decoration: none;'>https://www.disasterassistance.gov/</a></p>", unsafe_allow_html=True)    
     
-    
-
-
 elif tab == "chatbot":
     st.markdown("<h1 style='text-align: center; color: #FF5733; font-family: Georgia; font-size: 50px;'>TALK TO US</h1>", unsafe_allow_html=True)
     st.markdown("<p style='text-align: center; '>Ask any questions about wildfires and get predictions and safety tips!</p>", unsafe_allow_html=True)
