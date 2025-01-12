@@ -8,11 +8,4 @@ streamlit_folium
 joblib
 beautifulsoup4
 geocoder
-langchain
-langchain.chat_models
-langchain.chains
-langchain.memory
-dataclasses
-typing
-streamlit.components.v1
 
