@@ -128,12 +128,12 @@ if tab == "Home":
         </div>
     """, unsafe_allow_html=True)
 
-elif tab == "Resources":
+elif tab == "resources":
     st.title("Resources")
     st.write("Here, we provide resources related to wildfire prevention and safety.")
     st.markdown("[Link to more resources](https://www.nasa.gov/feature/nasa-develops-wildfire-prediction-model)")
 
-elif tab == "Chatbot":
+elif tab == "chatbot":
     st.title("Chat with Our Wildfire Chatbot")
     st.write("Ask any questions about wildfires and get predictions and safety tips!")
     user_input = st.text_input("Ask a question:")
