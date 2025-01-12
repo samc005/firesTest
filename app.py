@@ -193,7 +193,10 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # Get query params from URL
-tab = st.query_params.get("page", ["Home"])[0]  # Default to "Home" if no parameter
+query_params = st.experimental_get_query_params()
+
+#current page from URL query param
+tab = query_params.get("page", ["Home"])[0]  # Default to "home" if no parameter
 
 if tab == "Home":
     # Click
