@@ -58,6 +58,10 @@ st.markdown("""
 # Add custom CSS for the navigation bar
 st.markdown("""
     <style>
+    body {
+        margin: 0;
+        padding: 0;
+    }
     .navbar {
         background-color: #FF5733;
         padding: 5px;
