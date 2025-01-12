@@ -86,7 +86,7 @@ st.markdown("""
 # Navbar with links
 st.markdown("""
     <div class="navbar">
-        <a href="?page=home">Home</a>
+        <a href="">Home</a>
         <a href="?page=resources">Resources</a>
         <a href="?page=chatbot">Chatbot</a>
     </div>
