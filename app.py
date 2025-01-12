@@ -131,7 +131,7 @@ if tab == "Home":
     st.markdown('</div>', unsafe_allow_html=True)
 
     
-    if map_result == "None":
+    if "" in "last_clicked":
         st.write("Please choose a location")
     elif map_result and "last_clicked" in map_result: 
             clicked_location = map_result["last_clicked"]
