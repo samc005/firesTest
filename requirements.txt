@@ -1,11 +1,11 @@
-streamlit == 1.31.0
-numpy == 1.26.3
-pandas == 2.2.0
-scikit-learn == 1.4.0
-tensorflow == 2.18.0
+streamlit==1.31.0
+numpy==1.26.3
+pandas==2.2.0
+scikit-learn==1.4.0
+tensorflow==2.18.0
 folium
-streamlit-folium
+streamlit_folium
+joblib
 beautifulsoup4
 geocoder
-math
-datetime
+
