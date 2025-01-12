@@ -276,7 +276,7 @@ elif tab == "chatbot":
 
     def load_css():
         with open("static/styles.css", "r") as f:
-            css = f"<style>{f.read()}<\style>"
+            css = f"<style>{f.read()}</style>"
             st.markdown(css, unsafe_allow_html=True)
 
     def init_state():
