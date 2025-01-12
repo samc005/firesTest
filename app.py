@@ -157,14 +157,12 @@ if tab == "Home":
     # Initialize map
     m = folium.Map(location=[40.0, -120.0], zoom_start=5)
 
-    # Add a click handler for placing fire markers with a custom icon
     folium.ClickForMarker(
         popup="Fire Marker", 
         icon=folium.Icon(icon="cloud", icon_color="orange", color="red")
     ).add_to(m)
 
-    #folium.Marker(location=[40.0, -120.0]).add_to(m) 
-    #m.add_child(folium.ClickForMarker()) # Add click functionality to the map
+    m.add_child(folium.ClickForMarker())
 
     # Render map 
     map_result = st_folium(m, width=700)
