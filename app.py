@@ -1,6 +1,8 @@
 import streamlit as st
 import folium
+import tensorflow as tf
 from streamlit_folium import st_folium
+import random
 import numpy as np
 import pandas as pd
 from joblib import load
@@ -8,6 +10,7 @@ import math
 import datetime
 
 from getData import get_weather_data
+from getData import get_fire_data
 
 model = load('model.joblib')
 
@@ -32,7 +35,7 @@ def predict(processed_data):
    prediction = model.predict(processed_data)
    return prediction
 
-def is_within_radius(predicted_radius, point, center=(0, 0)):
+def is_within_radius(predicted_radius, distance):
    """
    Determines if a given point is within the circle defined by a predicted radius 
    with a ±20% margin of error.
@@ -43,36 +46,33 @@ def is_within_radius(predicted_radius, point, center=(0, 0)):
 
    :return: A message indicating whether the point is inside the circle or not.
    """
-   # Calculate the Euclidean distance from the center to the point
-   distance = math.sqrt((point[0] - center[0]) ** 2 + (point[1] - center[1]) ** 2)
+   # Calculate the radius of the predicted area (convert units)
+   predicted_radius *= 100
+   danger_radius = math.sqrt(predicted_radius / (math.pi))
 
    # Calculate the actual radius range (80% to 120% of predicted radius)
-   min_radius = predicted_radius * 0.8
-   max_radius = predicted_radius * 1.2
+   # min_radius = danger_radius * 0.8
+   max_radius = danger_radius * 1.2
 
    # Check if the point is within the circle's range
-   if min_radius <= distance <= max_radius:
-      return f"<p style='text-align: center;'>You are within the high-risk radius of {predicted_radius[0]} (±20% error).</p>"
+   if distance <= max_radius:
+      return f"You are within the high-risk radius of {danger_radius:.3} km."
    else:
-      return f"<p style='text-align: center;'>You are safe outside the high-risk radius of {predicted_radius[0]} (±20% error).</p>"
+      return f"You are safe outside the high-risk radius of {danger_radius:.3} km."
 
-def print_result(prediction):
+def print_result(prediction, fire_data):
    point = (latitude, longitude)  # Example point coordinates
-   result = is_within_radius(prediction, point)
+   result = is_within_radius(prediction, fire_data["distance"])
    return result
-
 
 #styles
 st.markdown("""
     <style>
-    @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@800&display=swap' rel="stylesheet")
-
     /* Custom theme */
     .css-1d391kg {background-color: black; color: white;}  /* General page background color */
     
     /* Title styling */
     h1 {
-        font-family: 'Raleway', serif;
         text-align: center;
         color: #FF5733;
     }
@@ -122,7 +122,6 @@ st.markdown("""
     .navbar a:hover {
         background-color: #ddd;
         color: black;
-        transition: 0.3s ease; 
     }
     .content {
         margin-top: 60px; /* Add margin to push content below the navbar */
@@ -133,9 +132,9 @@ st.markdown("""
 #tabs (links)
 st.markdown("""
     <div class="navbar">
-        <a href="?page=Home" class="{% if page == 'Home' %}active{% endif %}">Home</a>
-        <a href="?page=resources" class="{% if page == 'resources' %}active{% endif %}">Resources</a>
-        <a href="?page=chatbot" class="{% if page == 'chatbot' %}active{% endif %}">Chatbot</a>
+        <a href="">Home</a>
+        <a href="?page=resources">Resources</a>
+        <a href="?page=chatbot">Chatbot</a>
     </div>
 """, unsafe_allow_html=True)
 
@@ -148,21 +147,17 @@ tab = query_params.get("page", ["Home"])[0]  # Default to "home" if no parameter
 if tab == "Home":
     # Click
     st.markdown("<h1 style='text-align: center; color: #FF5733; font-family: Georgia; font-size: 50px;'>WILDFIRE PREDICTION MODEL</h1>", unsafe_allow_html=True)
-    st.markdown("<h2 style='text-align: center; color: white; font-size: 25px;'>Click on the map to select a location:</h2>", unsafe_allow_html=True)
+    st.markdown("<h2 style='text-align: center; font-family: Georgia; color: white;'>Click on the map to select a location:</h2>", unsafe_allow_html=True)
 
     st.markdown("<p style='text-align: center; color: #FF5733;'>This model predicts the likelihood of wildfire occurrence based on environmental factors. Click on the map to choose a location, and the model will fetch environmental data for prediction.</p>", unsafe_allow_html=True)
 
     st.markdown('<div class="map-container">', unsafe_allow_html=True)
 
-    icon_path = 'fire.png'
-
     # Initialize map
     m = folium.Map(location=[40.0, -120.0], zoom_start=5)
 
-    fire_icon = folium.CustomIcon(icon_path, icon_size=(30, 30))
-
-    # Add it to the map
-    m.add_child(folium.ClickForMarker(popup="Fire Marker", icon=fire_icon))
+    folium.Marker(location=[40.0, -120.0]).add_to(m) 
+    m.add_child(folium.ClickForMarker()) # Add click functionality to the map
 
     # Render map 
     map_result = st_folium(m, width=700)
@@ -177,6 +172,7 @@ if tab == "Home":
             longitude = clicked_location["lng"]
                         
             weather_data = get_weather_data(latitude, longitude)
+            fire_data = get_fire_data(latitude, longitude)
 
             if weather_data:
                 current_date = datetime.datetime.now()
@@ -187,7 +183,7 @@ if tab == "Home":
                 user_input += str(weather_data['precipitation'])
                 input_data = prepare_data(user_input)
                 prediction = predict(input_data)
-                st.markdown(f"<p style='text-align: center;'>{print_result(prediction)}</p>", unsafe_allow_html=True)
+                st.write(print_result(prediction, fire_data))
 
     # Display latitude and longitude separately
             st.markdown(
@@ -211,34 +207,23 @@ if tab == "Home":
     """, unsafe_allow_html=True)
 
 elif tab == "resources":
-    st.markdown("<h1 style='text-align: center; color: #FF5733; font-family: Raleway; font-size: 50px;'>SAFETY TIPS</h1>", unsafe_allow_html=True)
-    st.markdown("<p style='text-align: center; '>Here, we provide information and resources related to wildfire safety and prevention.</p>", unsafe_allow_html=True)
+    st.markdown("<h1 style='text-align: center; color: #FF5733; font-family: Georgia; font-size: 50px;'>WHERE TO FIND HELP</h1>", unsafe_allow_html=True)
+    st.markdown("<p style='text-align: center; '>Here, we provide resources related to wildfire prevention and safety.</p>", unsafe_allow_html=True)
     st.image("https://cdn.kqed.org/wp-content/uploads/sites/10/2025/01/GettyImages-2193000280-1020x653.jpg", caption="Crowd watching Palisades Fire from Santa Monica, California on January 8, 2025. (Tiffany Rose/Getty Images)", use_column_width=True)
-   
-    st.markdown("<p style='text-align: center; color: #FF5733; font-family: Georgia; font-size: 20px;'>Some tips: </p>", unsafe_allow_html=True)
-    st.markdown("<p style ='text-align: center; color: white; font-family: Georgia; font-size: 15px;'>Have emergency supplies prepared. Pack essentials like water, food, and medicine.</p>", unsafe_allow_html=True)
-    st.markdown("<p style ='text-align: center; color: white; font-family: Georgia; font-size: 15px;'>Monitor fires and the weather around you regularly.</p>", unsafe_allow_html=True)
-    st.markdown("<p style ='text-align: center; color: white; font-family: Georgia; font-size: 15px;'>Learn emergency skills such as CPR and First Aid.</p>", unsafe_allow_html=True)
-    st.markdown("<p style ='text-align: center; color: white; font-family: Georgia; font-size: 15px;'>Plan to not have access to electricity or the internet.</p>", unsafe_allow_html=True)
-    st.markdown("<p style ='text-align: center; color: white; font-family: Georgia; font-size: 15px;'>Keep personal records safe.</p>", unsafe_allow_html=True)
+    st.markdown("<p style='text-align: left; color: #FF5733; font-family: Georgia; font-size: 20px;'>Contact the Federal Emergency Management Agency: https://www.disasterassistance.gov/</p>", unsafe_allow_html=True)
+    st.markdown("<p style='text-align: left; color: #FF5733; font-family: Georgia; font-size: 20px;'>Create your own wildfire action plan: https://readyforwildfire.org/prepare-for-wildfire/wildfire-action-plan/</p>", unsafe_allow_html=True)
+    st.markdown("<p style='text-align: left; color: #FF5733; font-family: Georgia; font-size: 20px;'>General information about wildfires: https://namica.org/wildfires/</p>", unsafe_allow_html=True)
+    st.markdown("<p style='text-align: left; color: #FF5733; font-family: Georgia; font-size: 20px;'>Helpline for counseling (related to natural/man-made disasters): https://www.samhsa.gov/find-help/helplines/disaster-distress-helpline</p>", unsafe_allow_html=True)
+    st.markdown("<p style='text-align: left; color: #FF5733; font-family: Georgia; font-size: 20px;'>Resources to recover from wildfires: https://www.cdfa.ca.gov/firerecovery/</p>", unsafe_allow_html=True)
+    st.markdown("<p style='text-align: left; color: #FF5733; font-family: Georgia; font-size: 20px;'>External list of organizations/programs that can help with wildfire recovery: https://readyforwildfire.org/post-wildfire/who-can-help/</p>", unsafe_allow_html=True)
+
     
-    st.markdown("<p style='text-align: center; color: #FF5733; font-family: Georgia; font-size: 20px;'>Contact the Federal Emergency Management Agency (FEMA):</p>", unsafe_allow_html=True)
-    st.markdown("<p style='text-align: center; color: white; font-family: Georgia; font-size: 15px;'>https://www.disasterassistance.gov/</p>", unsafe_allow_html=True)
-    st.markdown("<p style='text-align: center; color: #FF5733; font-family: Georgia; font-size: 20px;'>Create your own wildfire action plan:</p>", unsafe_allow_html=True)
-    st.markdown("<p style='text-align: center; color: white; font-family: Georgia; font-size: 15px;'>https://readyforwildfire.org/prepare-for-wildfire/wildfire-action-plan/</p>", unsafe_allow_html=True)
-    st.markdown("<p style='text-align: center; color: #FF5733; font-family: Georgia; font-size: 20px;'>General information about wildfires:</p>", unsafe_allow_html=True)
-    st.markdown("<p style='text-align: center; color: white; font-family: Georgia; font-size: 15px;'>https://namica.org/wildfires/</p>", unsafe_allow_html=True)
-    st.markdown("<p style='text-align: center; color: #FF5733; font-family: Georgia; font-size: 20px;'>Helpline for counseling (related to natural/man-made disasters):", unsafe_allow_html=True)
-    st.markdown("<p style='text-align: center; color: white; font-family: Georgia; font-size: 15px;'>https://www.samhsa.gov/find-help/helplines/disaster-distress-helpline</p>", unsafe_allow_html=True)
-    st.markdown("<p style='text-align: center; color: #FF5733; font-family: Georgia; font-size: 20px;'>Resources to recover from wildfires:</p>", unsafe_allow_html=True)
-    st.markdown("<p style='text-align: center; color: white; font-family: Georgia; font-size: 15px;'>https://www.cdfa.ca.gov/firerecovery/</p>", unsafe_allow_html=True)
-    st.markdown("<p style='text-align: center; color: #FF5733; font-family: Georgia; font-size: 20px;'>External list of organizations/programs that can help with wildfire recovery:</p>", unsafe_allow_html=True)
-    st.markdown("<p style='text-align: center; color: white; font-family: Georgia; font-size: 15px;'>https://readyforwildfire.org/post-wildfire/who-can-help</p>", unsafe_allow_html=True)
-    
+
+
 elif tab == "chatbot":
-    st.markdown("<h1 style='text-align: center; color: #FF5733; font-family: Raleway; font-size: 50px;'>TALK TO US</h1>", unsafe_allow_html=True)
+    st.markdown("<h1 style='text-align: center; color: #FF5733; font-family: Georgia; font-size: 50px;'>TALK TO US</h1>", unsafe_allow_html=True)
     st.markdown("<p style='text-align: center; '>Ask any questions about wildfires and get predictions and safety tips!</p>", unsafe_allow_html=True)
     user_input = st.text_input("Ask a question:")
     if user_input:
         st.write(f"You asked: {user_input}")
-        st.write("Chatbot response: [Simulated Answer] Stay safe and prepared for wildfires!")
+        st.write("Chatbot response: [Simulated Answer] Stay safe and prepared for wildfires!")     
