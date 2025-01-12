@@ -103,8 +103,6 @@ st.markdown("""
     </div>
 """, unsafe_allow_html=True)
 
-st.markdown("<h1 style='text-align: center; color: #FF5733; font-family: Georgia; font-size: 50px;'>WILDFIRE PREDICTION MODEL</h1>", unsafe_allow_html=True)
-
 # Get query params from URL
 query_params = st.experimental_get_query_params()
 
@@ -113,6 +111,7 @@ tab = query_params.get("page", ["Home"])[0]  # Default to "home" if no parameter
 
 if tab == "Home":
     # Click
+    st.markdown("<h1 style='text-align: center; color: #FF5733; font-family: Georgia; font-size: 50px;'>WILDFIRE PREDICTION MODEL</h1>", unsafe_allow_html=True)
     st.markdown("<h2 style='text-align: center; font-family: Georgia; color: white;'>Click on the map to select a location:</h2>", unsafe_allow_html=True)
 
     st.markdown("<p style='text-align: center; color: #FF5733;'>This model predicts the likelihood of wildfire occurrence based on environmental factors. Click on the map to choose a location, and the model will fetch environmental data for prediction.</p>", unsafe_allow_html=True)
@@ -159,7 +158,7 @@ if tab == "Home":
     """, unsafe_allow_html=True)
 
 elif tab == "resources":
-    st.title("Resources")
+    st.markdown("<h1 style='text-align: center; color: #FF5733; font-family: Georgia; font-size: 50px;'>WILDFIRE PREDICTION MODEL</h1>", unsafe_allow_html=True)
     st.write("Here, we provide resources related to wildfire prevention and safety.")
     st.markdown("[Link to more resources](https://www.nasa.gov/feature/nasa-develops-wildfire-prediction-model)")
 
