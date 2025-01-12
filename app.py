@@ -131,8 +131,8 @@ if tab == "Home":
     st.markdown('</div>', unsafe_allow_html=True)
 
     if map_result and "last_clicked" in map_result:
-        latitude = map_result["last_clicked"]["lat"]
-        longitude = map_result["last_clicked"]["lng"]
+        latitude = map_result["last_clicked"]['lat']
+        longitude = map_result["last_clicked"]['lng']
         st.write("Latitude: ", latitude)
         st.write("Longitude: ", longitude)
 
