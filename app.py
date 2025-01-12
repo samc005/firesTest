@@ -72,7 +72,7 @@ st.markdown("""
     
     /* Title styling */
     h1 {
-        font-family: “Raleway”, serif;
+        font-family: 'Raleway', serif;
         text-align: center;
         color: #FF5733;
     }
@@ -132,9 +132,9 @@ st.markdown("""
 #tabs (links)
 st.markdown("""
     <div class="navbar">
-        <a href="">Home</a>
-        <a href="?page=resources">Resources</a>
-        <a href="?page=chatbot">Chatbot</a>
+        <a href="?page=Home" class="{% if page == 'Home' %}active{% endif %}">Home</a>
+        <a href="?page=resources" class="{% if page == 'resources' %}active{% endif %}">Resources</a>
+        <a href="?page=chatbot" class="{% if page == 'chatbot' %}active{% endif %}">Chatbot</a>
     </div>
 """, unsafe_allow_html=True)
 
