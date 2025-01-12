@@ -132,7 +132,7 @@ if tab == "Home":
 
     if map_result and "last_clicked" in map_result:
         clicked_location = map_result["last_clicked"]
-        st.write(f"You clicked on location: {clicked_location}")
+        st.write(f"<p style= 'text-align: center;'>You clicked on location: {clicked_location}</p>", unsafe_allow_html=True)
 
     # Footer
     st.markdown("""
