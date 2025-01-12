@@ -52,9 +52,10 @@ def is_within_radius(predicted_radius, point, center=(0, 0)):
 
    # Check if the point is within the circle's range
    if min_radius <= distance <= max_radius:
-      return f"You are within the high-risk radius of {predicted_radius[0]} (±20% error)."
+      return f"<p style='text-align: center;'>You are within the high-risk radius of {predicted_radius[0]} (±20% error).</p>"
    else:
-      return f"You are safe outside the high-risk radius of {predicted_radius[0]} (±20% error)."
+      return f"<p style='text-align: center;'>You are safe outside the high-risk radius of {predicted_radius[0]} (±20% error).</p>"
+
 
 def print_result(prediction):
    point = (latitude, longitude)  # Example point coordinates
@@ -222,11 +223,6 @@ elif tab == "resources":
     st.markdown("<p style='text-align: center; color: #FF5733; font-family: Georgia; font-size: 20px;'>External list of organizations/programs that can help with wildfire recovery:</p>", unsafe_allow_html=True)
     st.markdown("<p style='text-align: center; color: white; font-family: Georgia; font-size: 15px;'>https://readyforwildfire.org/post-wildfire/who-can-help</p>", unsafe_allow_html=True)
     
-    
-
-    
-
-
 elif tab == "chatbot":
     st.markdown("<h1 style='text-align: center; color: #FF5733; font-family: Raleway; font-size: 50px;'>TALK TO US</h1>", unsafe_allow_html=True)
     st.markdown("<p style='text-align: center; '>Ask any questions about wildfires and get predictions and safety tips!</p>", unsafe_allow_html=True)
