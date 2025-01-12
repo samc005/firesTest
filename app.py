@@ -58,32 +58,84 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
-# Add a Marker on Click (or any other interactive layer like GeoJSON)
-st.markdown("<h2 style='text-align: center; font-family: Georgia; color: white;'>Click on the map to select a location:</h2>", unsafe_allow_html=True)
-
-st.markdown("<p style='text-align: center; color: #FF5733;'>This model predicts the likelihood of wildfire occurrence based on environmental factors. Click on the map to choose a location, and the model will fetch environmental data for prediction.</p>", unsafe_allow_html=True)
-
-st.markdown('<div class="map-container">', unsafe_allow_html=True)
-
-# Initialize map
-m = folium.Map(location=[40.0, -120.0], zoom_start=5)
-
-folium.Marker(location=[40.0, -120.0]).add_to(m) 
-m.add_child(folium.ClickForMarker()) # Add click functionality to the map
-
-# Render the map with `st_folium`
-map_result = st_folium(m, width=700)
-
-st.markdown('</div>', unsafe_allow_html=True)
-
-if map_result and "last_clicked" in map_result:
-    clicked_location = map_result["last_clicked"]
-    st.write(f"You clicked on location: {clicked_location}")
-
-# Footer with additional information
+# Add custom CSS for the navigation bar
 st.markdown("""
-    <div style="text-align: center; font-size: 14px; color: gray;">
-        <p>Data sources: National Weather Service, Fire Prediction Model</p>
+    <style>
+    .navbar {
+        background-color: #FF5733;
+        padding: 10px;
+        text-align: center;
+    }
+
+    .navbar a {
+        color: white;
+        padding: 14px 20px;
+        text-decoration: none;
+        font-size: 18px;
+        display: inline-block;
+    }
+
+    .navbar a:hover {
+        background-color: #ddd;
+        color: black;
+    }
+    </style>
+""", unsafe_allow_html=True)
+
+# Display the navbar with tabs (links)
+st.markdown("""
+    <div class="navbar">
+        <a href="#home">Home</a>
+        <a href="#resources">Resources</a>
+        <a href="#chatbot">Chatbot</a>
     </div>
 """, unsafe_allow_html=True)
+
+tab = st.radio("Choose a section", options=["Home", "Resources", "Chatbot"])
+
+if tab == "Home":
+
+
+    # Add a Marker on Click (or any other interactive layer like GeoJSON)
+    st.markdown("<h2 style='text-align: center; font-family: Georgia; color: white;'>Click on the map to select a location:</h2>", unsafe_allow_html=True)
+
+    st.markdown("<p style='text-align: center; color: #FF5733;'>This model predicts the likelihood of wildfire occurrence based on environmental factors. Click on the map to choose a location, and the model will fetch environmental data for prediction.</p>", unsafe_allow_html=True)
+
+    st.markdown('<div class="map-container">', unsafe_allow_html=True)
+
+    # Initialize map
+    m = folium.Map(location=[40.0, -120.0], zoom_start=5)
+
+    folium.Marker(location=[40.0, -120.0]).add_to(m) 
+    m.add_child(folium.ClickForMarker()) # Add click functionality to the map
+
+    # Render the map with `st_folium`
+    map_result = st_folium(m, width=700)
+
+    st.markdown('</div>', unsafe_allow_html=True)
+
+    if map_result and "last_clicked" in map_result:
+        clicked_location = map_result["last_clicked"]
+        st.write(f"You clicked on location: {clicked_location}")
+
+    # Footer with additional information
+    st.markdown("""
+        <div style="text-align: center; font-size: 14px; color: gray;">
+            <p>Data sources: National Weather Service, Fire Prediction Model</p>
+        </div>
+    """, unsafe_allow_html=True)
+
+elif tab == "Resources":
+    st.title("Resources")
+    st.write("Here, we provide resources related to wildfire prevention and safety.")
+    st.markdown("[Link to more resources](https://www.nasa.gov/feature/nasa-develops-wildfire-prediction-model)")
+
+elif tab == "Chatbot":
+    st.title("Chat with Our Wildfire Chatbot")
+    st.write("Ask any questions about wildfires and get predictions and safety tips!")
+    user_input = st.text_input("Ask a question:")
+    if user_input:
+        st.write(f"You asked: {user_input}")
+        st.write("Chatbot response: [Simulated Answer] Stay safe and prepared for wildfires!")
+
 
