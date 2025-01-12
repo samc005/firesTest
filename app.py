@@ -58,6 +58,11 @@ st.markdown("""
 #navigation bar
 st.markdown("""
     <style>
+    .css-18e3th9 { 
+        padding-top: 0rem; 	
+        padding-bottom: 0rem; 
+    }
+
     body {
         margin: 0;
         padding: 0;
