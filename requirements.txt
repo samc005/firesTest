@@ -11,4 +11,5 @@ geocoder
 langchain
 dataclasses
 typing
+streamlit.components.v1
 
