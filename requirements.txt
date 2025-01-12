@@ -5,6 +5,7 @@ scikit-learn == 1.4.0
 tensorflow == 2.18.0
 folium
 streamlit_folium
+joblib
 beautifulsoup4
 geocoder
 math
