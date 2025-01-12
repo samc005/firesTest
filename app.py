@@ -83,19 +83,22 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # Display the navbar with tabs (links)
+# Navbar with links
 st.markdown("""
     <div class="navbar">
-        <a href="#home">Home</a>
-        <a href="#resources">Resources</a>
-        <a href="#chatbot">Chatbot</a>
+        <a href="?page=home">Home</a>
+        <a href="?page=resources">Resources</a>
+        <a href="?page=chatbot">Chatbot</a>
     </div>
 """, unsafe_allow_html=True)
 
-tab = st.radio("Choose a section", options=["Home", "Resources", "Chatbot"])
+# Get query params from the URL
+query_params = st.experimental_get_query_params()
+
+# Get the current page from the URL query parameter
+tab = query_params.get("page", ["home"])[0]  # Default to "home" if no parameter
 
 if tab == "Home":
-
-
     # Add a Marker on Click (or any other interactive layer like GeoJSON)
     st.markdown("<h2 style='text-align: center; font-family: Georgia; color: white;'>Click on the map to select a location:</h2>", unsafe_allow_html=True)
 
