@@ -129,6 +129,23 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
+@st.cache_data
+def create_map(lat, lon, zoom=5):
+   m = folium.Map(location=[40.0, -120.0], zoom_start=5)
+   folium.Marker(location=[40.0, -120.0]).add_to(m) 
+   m.add_child(folium.ClickForMarker()) # Add click functionality to the map
+
+   fire_data = pd.read_csv('df_fire.csv')
+
+   for index, row in fire_data.iterrows():
+      latitude = row['latitude']  # Replace 'latitude' with the actual column name
+      longitude = row['longitude']  # Replace 'longitude' with the actual column name
+      folium.Marker(
+         location=[latitude, longitude],
+         icon=folium.Icon(color='red', icon='fire')
+      ).add_to(m)
+   return m
+
 #tabs (links)
 st.markdown("""
     <div class="navbar">
@@ -154,24 +171,8 @@ if tab == "Home":
     st.markdown('<div class="map-container">', unsafe_allow_html=True)
 
     # Initialize map
-    m = folium.Map(location=[40.0, -120.0], zoom_start=5)
-
-    folium.Marker(location=[40.0, -120.0]).add_to(m) 
-    m.add_child(folium.ClickForMarker()) # Add click functionality to the map
-    
-
-
-    fire_data = pd.read_csv('df_fire.csv')
-
-    for index, row in fire_data.iterrows():
-        latitude = row['latitude']  # Replace 'latitude' with the actual column name
-        longitude = row['longitude']  # Replace 'longitude' with the actual column name
-        folium.Marker(
-            location=[latitude, longitude],
-            icon=folium.Icon(color='red', icon='fire')
-        ).add_to(m)
-
-
+    m = create_map(40.0, -120.0)
+   
     # Render map 
     map_result = st_folium(m, width=700)
 
