@@ -16,11 +16,10 @@ from dataclasses import dataclass
 from typing import Literal
 import streamlit as st
 
-from langchain import OpenAI
-from langchain.callbacks import get_openai_callback
+import streamlit as st
+from langchain.chat_models import ChatOpenAI
+from langchain.memory import ConversationSummaryMemory
 from langchain.chains import ConversationChain
-from langchain.chains.conversation.memory import ConversationSummaryMemory
-import streamlit.components.v1 as components
 
 
 @st.cache_resource
@@ -269,112 +268,43 @@ elif tab == "resources":
     st.markdown("<p style='text-align: center;'><a href='https://readyforwildfire.org/post-wildfire/who-can-help' target='_blank' style='color: white; font-family: Georgia; font-size: 15px; text-decoration: none;'>https://readyforwildfire.org/post-wildfire/who-can-help</a></p>", unsafe_allow_html=True)    
     
 elif tab == "chatbot":
-    @dataclass
-    class Message: #keeps track of messages
-        origin: Literal["human", "AI"]
-        message: str
-
-    def load_css():
-        with open("static/styles.css", "r") as f:
-            css = f"<style>{f.read()}</style>"
-            st.markdown(css, unsafe_allow_html=True)
-
+    # Initialize session state if not already set
     def init_state():
         if "history" not in st.session_state:
             st.session_state.history = []
         if "token_count" not in st.session_state:
             st.session_state.token_count = 0
         if "conversation" not in st.session_state:
-            llm = OpenAI(temperature=0, openai_api_key=st.secrets["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
-"], modName="text-davinci-003")
+            # Ensure API key is retrieved securely from Streamlit secrets
+            openai_api_key = st.secrets["openai_api_key"]  # Use your own secret key name here
+            llm = ChatOpenAI(temperature=0, openai_api_key=openai_api_key)
             st.session_state.conversation = ConversationChain(
-                llm = llm,
-                mem = ConversationSummaryMemory(llm=llm)
+                llm=llm,
+                memory=ConversationSummaryMemory(llm=llm)
             )
-
+    
+    # Callback function to handle user input and bot response
     def on_click_callback():
-        with get_openai_callback() as cb:
-            prompt = st.session_state.prompt
-            response = st.session_state.conversation.run(prompt)
-            st.session_state.history.append(
-                Message("human", prompt)
-            )
-            st.session_state.history.append(
-                Message("AI", response)
-            )
-            st.session_state.token_count += cb.total_tokens
-
-    load_css()
+        prompt = st.session_state.prompt
+        response = st.session_state.conversation.run(prompt)
+        st.session_state.history.append({"origin": "human", "message": prompt})
+        st.session_state.history.append({"origin": "AI", "message": response})
+    
+    # Initialize state
     init_state()
-
-    st.markdown("<h1 style='text-align: center; color: #FF5733; font-family: Georgia; font-size: 50px;'>TALK TO US</h1>", unsafe_allow_html=True)
-    st.markdown("<p style='text-align: center; '>Ask any questions about wildfires and get predictions and safety tips!</p>", unsafe_allow_html=True)
-
-    chat_hold = st.container()
-    prompt_hold = st.form("chat-form")
-    credit_hold = st.empty()
-
-    with chat_hold:
-        for chat in st.session_state.history:
-            div = f"""
-    <div class="chat-row 
-        {'' if chat.origin == 'AI' else 'row-reverse'}">
-        <img class="chat-icon" src="app/static/{
-            'ai_icon.png' if chat.origin == 'AI' 
-                          else 'user_icon.png'}"
-             width=32 height=32>
-        <div class="chat-bubble
-        {'ai-bubble' if chat.origin == 'AI' else 'human-bubble'}">
-            &#8203;{chat.message}
-        </div>
-    </div>
-            """
-            st.markdown(div, unsafe_allow_html=True)
-        
-        for _ in range(3):
-            st.markdown("")
     
-    with prompt_hold:
-        st.markdown("**Chat**")
-        cols = st.columns((6, 1))
-        cols[0].text_input(
-            "Chat",
-            value="Hello!",
-            label_visibility="collapsed",
-            key="prompt",
-        )
-        cols[1].form_submit_button(
-            "Submit", 
-            type="primary", 
-            on_click=on_click_callback, 
-        )
+    # Set up the app layout
+    st.title("Chat with AI")
     
-    credit_hold.caption(f"""
-    Used {st.session_state.token_count} tokens \n
-    Debug Langchain conversation: 
-    {st.session_state.conversation.memory.buffer}
-    """)
-
-    components.html("""
-    <script>
-    const streamlitDoc = window.parent.document;
-
-    const buttons = Array.from(
-        streamlitDoc.querySelectorAll('.stButton > button')
-    );
-    const submitButton = buttons.find(
-        el => el.innerText === 'Submit'
-    );
+    # Display chat history
+    for chat in st.session_state.history:
+        st.markdown(f"**{chat['origin']}**: {chat['message']}")
     
-    streamlitDoc.addEventListener('keydown', function(e) {
-        switch (e.key) {
-            case 'Enter':
-                submitButton.click();
-                break;
-        }
-    });
-    </script>
-    """, 
-        height=0,
-        width=0,
-    )
+    # User input form
+    with st.form(key="chat-form"):
+        st.text_input("Your message:", key="prompt")
+        submit_button = st.form_submit_button(label="Send", on_click=on_click_callback)
+    
+    # Display token usage (Optional for debugging)
+    st.write(f"Tokens used: {st.session_state.token_count}")
+    
