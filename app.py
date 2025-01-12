@@ -278,6 +278,7 @@ elif tab == "chatbot":
             st.session_state.conversation = ConversationChain(
                 llm = llm
                 mem = ConversationSummaryMemory(llm=llm)
+            )
 
     def on_click_callback():
         with get_openai_callback() as cb:
@@ -302,8 +303,8 @@ elif tab == "chatbot":
     credit_hold = st.empty()
 
     with chat_hold:
-    for chat in st.session_state.history:
-        div = f"""
+        for chat in st.session_state.history:
+            div = f"""
     <div class="chat-row 
         {'' if chat.origin == 'AI' else 'row-reverse'}">
         <img class="chat-icon" src="app/static/{
