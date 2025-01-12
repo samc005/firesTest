@@ -130,12 +130,21 @@ if tab == "Home":
 
     st.markdown('</div>', unsafe_allow_html=True)
 
-    if map_result and "last_clicked" in map_result:
-        latitude = map_result["last_clicked"]['lat']
-        longitude = map_result["last_clicked"]['lng']
-        st.write("Latitude: ", latitude)
-        st.write("Longitude: ", longitude)
-
+    if map_result and "last_clicked" in map_result: 
+        clicked_location = map_result["last_clicked"]
+        latitude = clicked_location["lat"]
+        longitude = clicked_location["lng"]
+    
+    # Display latitude and longitude separately
+    st.markdown(
+        f"""
+        <p style='text-align: center;'>
+            <strong>Latitude:</strong> {latitude:.6f} <br>
+            <strong>Longitude:</strong> {longitude:.6f}
+        </p>
+        """,
+        unsafe_allow_html=True,
+    )
 
     # Footer
     st.markdown("""
