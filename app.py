@@ -157,11 +157,9 @@ if tab == "Home":
     # Initialize map
     m = folium.Map(location=[40.0, -120.0], zoom_start=5)
 
-    fire_icon = folium.Icon(icon="cloud", icon_color="orange", color="red")
+    fire_icon = folium.Icon(icon="fire", icon_color="orange", color="red")
 
-    click_marker = folium.ClickForMarker(popup="Fire Marker", icon=fire_icon)
-
-    click_marker.add_to(m)
+    folium.ClickForMarker(popup="Fire Marker", icon=fire_icon).add_to(m)
 
     # Render map 
     map_result = st_folium(m, width=700)
