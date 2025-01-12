@@ -218,8 +218,7 @@ elif tab == "resources":
     st.markdown("<p style ='text-align: center; color: white; font-family: Georgia; font-size: 15px;'>Have emergency supplies prepared. Pack essentials like water, food, and medicine.</p>", unsafe_allow_html=True)
     st.markdown("<p style ='text-align: center; color: white; font-family: Georgia; font-size: 15px;'>Monitor fires and the weather around you regularly.</p>", unsafe_allow_html=True)
     st.markdown("<p style ='text-align: center; color: white; font-family: Georgia; font-size: 15px;'>Learn emergency skills such as CPR and First Aid.</p>", unsafe_allow_html=True)
-    st.markdown("<p style ='text-align: center; color: white; font-family: Georgia; font-size: 15px;'>Plan to not have access to electricity or the internet.
-</p>", unsafe_allow_html=True)
+    st.markdown("<p style ='text-align: center; color: white; font-family: Georgia; font-size: 15px;'>Plan to not have access to electricity or the internet.</p>", unsafe_allow_html=True)
     st.markdown("<p style ='text-align: center; color: white; font-family: Georgia; font-size: 15px;'>Keep personal records safe.</p>", unsafe_allow_html=True)
     
     st.markdown("<p style='text-align: center; color: #FF5733; font-family: Georgia; font-size: 20px;'>Contact the Federal Emergency Management Agency (FEMA):</p>", unsafe_allow_html=True)
