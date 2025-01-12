@@ -196,7 +196,7 @@ if tab == "Home":
                 user_input += str(weather_data['precipitation'])
                 input_data = prepare_data(user_input)
                 prediction = predict(input_data)
-                st.markdown(f"<p style='text-align: center;'>{print_result(prediction)}</p>", unsafe_allow_html=True)
+                st.markdown(f"<p style='text-align: center;'>{print_result(prediction, fire_data)}</p>", unsafe_allow_html=True)
 
     # Display latitude and longitude separately
             st.markdown(
