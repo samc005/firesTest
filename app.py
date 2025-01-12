@@ -1,34 +1,9 @@
-'''import streamlit as st 
-from joblib import load
-
-#model = load("model.joblib")
-
-st.markdown("<h1 style='text-align: center; color: #FF5733;'>Wildfire Prediction Model</h1>", unsafe_allow_html=True)
-
-
-
-def get_input():
-    elevation = st.number_input("Elevation (m): ")
-    population = st.number_input("Population: ")
-    input_features = [[elevation, population]]
-    return input_features
-
-def predict(model, input):
-    return model.predict(input)
-
-#def get_prediction():
-
-
-input_features = get_input()
-#prediction = predict(model, input_features)
-#get_prediction(prediction)
-st.write("Results: ", prediction)
-'''
-
 import streamlit as st
 import folium
 from streamlit_folium import st_folium
 import random
+
+from getData import get_weather_data
 
 #styles
 st.markdown("""
@@ -135,6 +110,13 @@ if tab == "Home":
         if clicked_location and "lat" in clicked_location and "lng" in clicked_location:
             latitude = clicked_location["lat"]
             longitude = clicked_location["lng"]
+                        
+            weather_data = get_weather_data(latitude, longitude)
+
+            if weather_data:
+                st.write("Weather Data for Location:")
+                for key, value in weather_data.items():
+                    st.write(f"{key}: {value}")
 
     # Display latitude and longitude separately
             st.markdown(
