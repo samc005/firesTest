@@ -148,7 +148,7 @@ if tab == "Home":
                 unsafe_allow_html=True,
             )
         else:
-            st.write("Please click on the map.")
+            st.markdown("<p style='text-align: center;'>Please click on the map.</p>", unsafe_allow_html=True)
 
 
     # Footer
