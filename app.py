@@ -207,8 +207,8 @@ tab = query_params.get("page", ["Home"])[0]  # Default to "home" if no parameter
 if tab == "Home":
     # Click
     st.markdown("""
-        <h1 style='color: #FF5733; font-family: Tahoma; font-size: 50px;'>FireWatch</h1>
-        <p style='color: #E28743; font-family: Tahoma; font-size: 20px; text-align: center; padding-right: 10px;'>&nbsp;A Real-Time Wildfire Predictor</p>
+        <h1 style='color: #FF5733; font-family: Tahoma; font-size: 50px; transition: 0.3s ease-in;'>FireWatch</h1>
+        <p style='color: #E28743; font-family: Tahoma; font-size: 20px; text-align: center; padding-right: 10px; transition: 0.3s ease-in;'>&nbsp;A Real-Time Wildfire Predictor</p>
     """, unsafe_allow_html=True)
     st.write('')
     st.write('')
