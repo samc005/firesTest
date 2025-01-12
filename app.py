@@ -280,8 +280,7 @@ elif tab == "resources":
     try:
         st.image(
         "https://cdn.kqed.org/wp-content/uploads/sites/10/2025/01/GettyImages-2193000280-1020x653.jpg",
-        caption="Crowd watching Palisades Fire from Santa Monica, California on January 8, 2025. (Tiffany Rose/Getty Images)",
-        use_container_width=False
+        caption="Crowd watching Palisades Fire from Santa Monica, California on January 8, 2025. (Tiffany Rose/Getty Images)"
         )
     except Exception as e:
         st.error(f"An error occurred: {e}")
