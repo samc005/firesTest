@@ -1,8 +1,6 @@
 import streamlit as st
 import folium
-import tensorflow as tf
 from streamlit_folium import st_folium
-import random
 import numpy as np
 import pandas as pd
 from joblib import load
@@ -63,14 +61,18 @@ def print_result(prediction):
    result = is_within_radius(prediction, point)
    return result
 
+
 #styles
 st.markdown("""
     <style>
+    @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@800&display=swap" rel="stylesheet”)
+
     /* Custom theme */
     .css-1d391kg {background-color: black; color: white;}  /* General page background color */
     
     /* Title styling */
     h1 {
+        font-family: “Raleway”, serif;
         text-align: center;
         color: #FF5733;
     }
@@ -144,8 +146,8 @@ tab = query_params.get("page", ["Home"])[0]  # Default to "home" if no parameter
 
 if tab == "Home":
     # Click
-    st.markdown("<h1 style='text-align: center; color: #FF5733; font-family: Georgia; font-size: 50px;'>WILDFIRE PREDICTION MODEL</h1>", unsafe_allow_html=True)
-    st.markdown("<h2 style='text-align: center; font-family: Georgia; color: white;'>Click on the map to select a location:</h2>", unsafe_allow_html=True)
+    st.markdown("<h1 style='text-align: center; color: #FF5733; font-family: Raleway; font-size: 50px;'>WILDFIRE PREDICTION MODEL</h1>", unsafe_allow_html=True)
+    st.markdown("<h2 style='text-align: center; color: white; font-size: 25px;'>Click on the map to select a location:</h2>", unsafe_allow_html=True)
 
     st.markdown("<p style='text-align: center; color: #FF5733;'>This model predicts the likelihood of wildfire occurrence based on environmental factors. Click on the map to choose a location, and the model will fetch environmental data for prediction.</p>", unsafe_allow_html=True)
 
@@ -204,23 +206,31 @@ if tab == "Home":
     """, unsafe_allow_html=True)
 
 elif tab == "resources":
-    st.markdown("<h1 style='text-align: center; color: #FF5733; font-family: Georgia; font-size: 50px;'>WHERE TO FIND HELP</h1>", unsafe_allow_html=True)
-    st.markdown("<p style='text-align: center; '>Here, we provide resources related to wildfire prevention and safety.</p>", unsafe_allow_html=True)
+    st.markdown("<h1 style='text-align: center; color: #FF5733; font-family: Raleway; font-size: 50px;'>SAFETY TIPS</h1>", unsafe_allow_html=True)
+    st.markdown("<p style='text-align: center; '>Here, we provide information and resources related to wildfire safety and prevention.</p>", unsafe_allow_html=True)
     st.image("https://cdn.kqed.org/wp-content/uploads/sites/10/2025/01/GettyImages-2193000280-1020x653.jpg", caption="Crowd watching Palisades Fire from Santa Monica, California on January 8, 2025. (Tiffany Rose/Getty Images)", use_column_width=True)
-    st.markdown("<p style='text-align: left; color: #FF5733; font-family: Georgia; font-size: 20px;'>Contact the Federal Emergency Management Agency: https://www.disasterassistance.gov/</p>", unsafe_allow_html=True)
-    st.markdown("<p style='text-align: left; color: #FF5733; font-family: Georgia; font-size: 20px;'>Create your own wildfire action plan: https://readyforwildfire.org/prepare-for-wildfire/wildfire-action-plan/</p>", unsafe_allow_html=True)
-    st.markdown("<p style='text-align: left; color: #FF5733; font-family: Georgia; font-size: 20px;'>General information about wildfires: https://namica.org/wildfires/</p>", unsafe_allow_html=True)
-    st.markdown("<p style='text-align: left; color: #FF5733; font-family: Georgia; font-size: 20px;'>Helpline for counseling (related to natural/man-made disasters): https://www.samhsa.gov/find-help/helplines/disaster-distress-helpline</p>", unsafe_allow_html=True)
-    st.markdown("<p style='text-align: left; color: #FF5733; font-family: Georgia; font-size: 20px;'>Resources to recover from wildfires: https://www.cdfa.ca.gov/firerecovery/</p>", unsafe_allow_html=True)
-    st.markdown("<p style='text-align: left; color: #FF5733; font-family: Georgia; font-size: 20px;'>External list of organizations/programs that can help with wildfire recovery: https://readyforwildfire.org/post-wildfire/who-can-help/</p>", unsafe_allow_html=True)
+    st.markdown("<p style='text-align: center; color: #FF5733; font-family: Georgia; font-size: 20px;'>Contact the Federal Emergency Management Agency (FEMA):</p>", unsafe_allow_html=True)
+    st.markdown("<p style='text-align: center; color: white; font-family: Georgia; font-size: 15px;'>https://www.disasterassistance.gov/</p>", unsafe_allow_html=True)
+    st.markdown("<p style='text-align: center; color: #FF5733; font-family: Georgia; font-size: 20px;'>Create your own wildfire action plan:</p>", unsafe_allow_html=True)
+    st.markdown("<p style='text-align: center; color: white; font-family: Georgia; font-size: 15px;'>https://readyforwildfire.org/prepare-for-wildfire/wildfire-action-plan/</p>", unsafe_allow_html=True)
+    st.markdown("<p style='text-align: center; color: #FF5733; font-family: Georgia; font-size: 20px;'>General information about wildfires:</p>", unsafe_allow_html=True)
+    st.markdown("<p style='text-align: center; color: white; font-family: Georgia; font-size: 15px;'>https://namica.org/wildfires/</p>", unsafe_allow_html=True)
+    st.markdown("<p style='text-align: center; color: #FF5733; font-family: Georgia; font-size: 20px;'>Helpline for counseling (related to natural/man-made disasters):", unsafe_allow_html=True)
+    st.markdown("<p style='text-align: center; color: white; font-family: Georgia; font-size: 15px;'>https://www.samhsa.gov/find-help/helplines/disaster-distress-helpline</p>", unsafe_allow_html=True)
+    st.markdown("<p style='text-align: center; color: #FF5733; font-family: Georgia; font-size: 20px;'>Resources to recover from wildfires:</p>", unsafe_allow_html=True)
+    st.markdown("<p style='text-align: center; color: white; font-family: Georgia; font-size: 15px;'>https://www.cdfa.ca.gov/firerecovery/</p>", unsafe_allow_html=True)
+    st.markdown("<p style='text-align: center; color: #FF5733; font-family: Georgia; font-size: 20px;'>External list of organizations/programs that can help with wildfire recovery:</p>", unsafe_allow_html=True)
+    st.markdown("<p style='text-align: center; color: white; font-family: Georgia; font-size: 15px;'>https://readyforwildfire.org/post-wildfire/who-can-help</p>", unsafe_allow_html=True)
+    
+    
 
     
 
 
 elif tab == "chatbot":
-    st.markdown("<h1 style='text-align: center; color: #FF5733; font-family: Georgia; font-size: 50px;'>TALK TO US</h1>", unsafe_allow_html=True)
+    st.markdown("<h1 style='text-align: center; color: #FF5733; font-family: Raleway; font-size: 50px;'>TALK TO US</h1>", unsafe_allow_html=True)
     st.markdown("<p style='text-align: center; '>Ask any questions about wildfires and get predictions and safety tips!</p>", unsafe_allow_html=True)
     user_input = st.text_input("Ask a question:")
     if user_input:
         st.write(f"You asked: {user_input}")
-        st.write("Chatbot response: [Simulated Answer] Stay safe and prepared for wildfires!")     
+        st.write("Chatbot response: [Simulated Answer] Stay safe and prepared for wildfires!")
