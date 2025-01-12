@@ -273,7 +273,7 @@ elif tab == "chatbot":
             st.session_state.history = []
         if "token_count" not in st.session_state:
             st.session_state.token_count = 0
-        if "conversation" not iin st.session_state:
+        if "conversation" not in st.session_state:
             llm = OpenAI(temperature=0, openai_api_key=st.secrets["openai_api_key"], modName="text-davinci-003")
             st.session_state.conversation = ConversationChain(
                 llm = llm
